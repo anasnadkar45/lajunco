@@ -77,7 +77,7 @@ export default function Hero() {
             <Button size="lg" className="font-bold text-secondary">
               {t.hero.primaryButton}
             </Button>
-            <Button size="lg" className="rounded-md font-bold text-white border border-primary/20 bg-white/5 px-8 py-4  hover:bg-primary transition-all duration-300">
+            <Button size="lg" className="rounded-md font-bold text-white border border-white/20 bg-white/5 px-8 py-4  hover:bg-primary transition-all duration-300">
               {t.hero.secondaryButton}
             </Button>
           </div>
