@@ -10,6 +10,7 @@ export const translations = {
       about: "About",
       services: "Services",
       contact: "Contact",
+      requestQuote: "Request a Quote"
     },
 
     hero: {
@@ -31,6 +32,7 @@ export const translations = {
       about: "من نحن",
       services: "خدماتنا",
       contact: "تواصل معنا",
+      requestQuote: "طلب عرض سعر"
     },
 
     hero: {

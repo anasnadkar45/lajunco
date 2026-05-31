@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="grid min-h-screen grid-cols-1 items-center gap-10 bg-[#071a33] px-8 pt-28 text-white md:grid-cols-2"
+      className="grid min-h-[150vh] grid-cols-1 items-center gap-10 bg-secondary px-8 pt-28 text-white md:grid-cols-2"
     >
       <div
         className={`

@@ -3,16 +3,21 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageProvider";
+import { Button } from "../ui/button";
 
 export default function LanguageToggle() {
   const { lang, toggleLanguage } = useLanguage();
 
   return (
-    <button
+    <Button
       onClick={toggleLanguage}
-      className="rounded-full border border-yellow-500 px-4 py-2 text-sm font-medium text-yellow-500"
+      variant={"outline"}
+      className="
+      border border-primary bg-transparent hover:bg-primary hover:text-foreground 
+      hover:cursor-pointer px-4 py-2 text-sm font-medium text-primary transition-all duration-300
+      "
     >
       {lang === "en" ? "العربية" : "English"}
-    </button>
+    </Button>
   );
 }
