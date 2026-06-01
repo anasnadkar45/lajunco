@@ -13,34 +13,7 @@ export const translations = {
       requestQuote: "Request a Quote"
     },
 
-    certificates: {
-      badge: "Trusted Security Partner",
-      title: "We protect what matters to you",
-      description:
-        "Professional security and guarding services across Saudi Arabia with high standards of discipline and reliability.",
-      documents: [
-        {
-          title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
-        },
-        {
-          title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
-        },
-        {
-          title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
-        },
-        {
-          title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
-        },
-        {
-          title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
-        },
-      ]
-    },
+
     hero: {
       badge: "Trusted Security Partner",
       title: "We protect what matters to you",
@@ -97,6 +70,111 @@ export const translations = {
           description:
             "Rapid response mobile patrols to reinforce safety and stability across sectors.",
         },
+      ],
+    },
+    certificates: {
+      badge: "Trusted Security Partner",
+      title: "We protect what matters to you",
+      description:
+        "Professional security and guarding services across Saudi Arabia with high standards of discipline and reliability.",
+      documents: [
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate2.png"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate3.png"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate4.png"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate5.png"
+        },
+      ]
+    },
+    about: {
+      badge: "About Lajun Security",
+      title: "Your trusted partner for security and guarding",
+      description: [
+        "Lajun is a Saudi security company specializing in integrated protection solutions for all sectors.",
+        "We build a professional security system aligned with Saudi Vision 2030 and tailored to the kingdom’s evolving needs.",
+        "Today we operate across all regions of Saudi Arabia, serving industrial, commercial, and government clients with excellence.",
+      ],
+      image: "lajunImage1.jpg",
+    },
+    service: {
+      stats: [
+        { value: "1000+", label: "Qualified Guards" },
+        { value: "500+", label: "Satisfied Clients" },
+        { value: "10", label: "Years of Experience" },
+        { value: "13", label: "Covered Regions" },
+      ],
+      badge: "Our Services",
+      title: "Comprehensive Security Solutions",
+      cards: [
+        {
+          title: "Access Control",
+          description:
+            "Managed entry and exit points with smart verification systems and expert gate supervision.",
+          image: "lajunImage2.png",
+        },
+        {
+          title: "Private Guarding",
+          description:
+            "Highly trained security teams protecting VIPs, sensitive facilities, and special events.",
+          image: "lajunImage3.png",
+        },
+        {
+          title: "Facility Protection",
+          description:
+            "Full building security services that keep operations safe and secure around the clock.",
+          image: "lajunImage4.png",
+        },
+        {
+          title: "Security Patrols",
+          description:
+            "Rapid-response patrol units maintaining safety and stability across all sectors.",
+          image: "lajunImage6.png",
+        },
+        {
+          title: "Monitoring Services",
+          description:
+            "Advanced CCTV and alarm monitoring to ensure continuous site supervision and fast reaction.",
+          image: "lajunImage5.png",
+        },
+        {
+          title: "Event Security",
+          description:
+            "Specialized security plans for events, exhibitions, and corporate gatherings.",
+          image: "lajunImage1.jpg",
+        },
+      ],
+      cta: "View All Services",
+    },
+    clients: {
+      badge: "Our Clients",
+      title: "Partners in Success",
+      items: [
+        { name: "Red Sea Authority" },
+        { name: "Bin Ghati Development" },
+        { name: ".Masc Co" },
+        { name: "MEEM Facility Management" },
+        { name: "BCC Construction" },
+        { name: "Al Jomaih Holding" },
+        { name: "Al Maali Hospital" },
+        { name: "Petromin Nissan" },
+        { name: "Creet International" },
+        { name: "Zid Co" },
+        { name: "Petromin Stellantis" },
+        { name: "PMDC (Bin Laden)" },
       ],
     },
   },
@@ -173,10 +251,10 @@ export const translations = {
     },
 
     certificates: {
-      badge: "Trusted Security Partner",
-      title: "We protect what matters to you",
+      badge: "شريكك الأمني الموثوق",
+      title: "نحمي كل ما يهمك",
       description:
-        "Professional security and guarding services across Saudi Arabia with high standards of discipline and reliability.",
+        "خدمات أمن وحراسة احترافية في جميع أنحاء المملكة العربية السعودية بأعلى معايير الانضباط والموثوقية.",
       documents: [
         {
           title: "Saudi Vision 2030",
@@ -184,21 +262,98 @@ export const translations = {
         },
         {
           title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
+          document: "Certificate2.png"
         },
         {
           title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
+          document: "Certificate3.png"
         },
         {
           title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
+          document: "Certificate4.png"
         },
         {
           title: "Saudi Vision 2030",
-          document: "Certificate1.jpeg"
+          document: "Certificate5.png"
         },
       ]
+    },
+    about: {
+      badge: "شركة لجن للأمن والحراسة",
+      title: "شركة سعودية متخصصة في تقديم الحلول الأمنية المتكاملة",
+      description: [
+        "انطلقت لجن بهدف واضح: بناء منظومة أمنية احترافية تتواكب متطلبات رؤية المملكة 2030 وتلبي الاحتياجات المتنامية للسوق السعودي.",
+        "نقدم حلول حماية متكاملة للقطاعين الصناعي والتجاري والحكومي مع الالتزام بأعلى معايير الجودة والانضباط.",
+        "نمتلك حضوراً شاملاً في جميع مناطق المملكة، ونخدم مئات العملاء بأمنية عالية وموثوقية ثابتة.",
+      ],
+      image: "lajunImage1.jpg",
+    },
+    service: {
+      stats: [
+        { value: "1000+", label: "حارس مؤهل" },
+        { value: "500+", label: "عميل راضي" },
+        { value: "10", label: "سنوات الخبرة" },
+        { value: "13", label: "منطقة مغطاة" },
+      ],
+      badge: "خدماتنا",
+      title: "حلول أمنية شاملة",
+      cards: [
+        {
+          title: "تنظيم الدخول والخروج",
+          description:
+            "إدارة احترافية للبوابات والتحقق من الزوار باستخدام أحدث الأنظمة التقنية.",
+          image: "lajunImage2.png",
+        },
+        {
+          title: "الحراسات الخاصة",
+          description:
+            "نخبة من الكفاءات الأمنية لحماية المواقع الحساسة وكبار الشخصيات.",
+          image: "lajunImage3.png",
+        },
+        {
+          title: "حراسات المنشآت",
+          description:
+            "حماية شاملة للمباني والمنشآت مع تنظيم الحركة بأعلى معايير الجودة.",
+          image: "lajunImage4.png",
+        },
+        {
+          title: "الدوريات الأمنية",
+          description:
+            "دوريات سريعة الاستجابة تعمل على تعزيز الأمان والاستقرار في كافة القطاعات.",
+          image: "lajunImage6.png",
+        },
+        {
+          title: "المراقبة الأمنية",
+          description:
+            "أنظمة مراقبة ذكية تعمل على مدار الساعة لضمان التغطية الأمنية الشاملة.",
+          image: "lajunImage5.png",
+        },
+        {
+          title: "تأمين الفعاليات",
+          description:
+            "حلول أمنية متكاملة لتنظيم وتأمين الحشود في الفعاليات والمؤتمرات.",
+          image: "lajunImage1.jpg",
+        },
+      ],
+      cta: "عرض جميع الخدمات",
+    },
+    clients: {
+      badge: "عملائنا",
+      title: "شركاؤنا في النجاح",
+      items: [
+        { name: "هيئة البحر الأحمر" },
+        { name: "تنمية بن غاطي" },
+        { name: "شركة ماسك" },
+        { name: "ميم لإدارة المنشآت" },
+        { name: "بي سي سي للإنشاءات" },
+        { name: "الجمعة القابضة" },
+        { name: "مستشفى المعالي" },
+        { name: "بترو مين نيسان" },
+        { name: "كريت الدولية" },
+        { name: "شركة زد" },
+        { name: "بترو مين ستيلانتس" },
+        { name: "PMDC (بن لادن)" },
+      ],
     },
   }
 } as const;
