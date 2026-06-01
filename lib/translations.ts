@@ -10,6 +10,7 @@ export const translations = {
       about: "About",
       services: "Services",
       contact: "Contact",
+      clients:"Clients",
       requestQuote: "Request a Quote"
     },
 
@@ -188,6 +189,7 @@ export const translations = {
       about: "من نحن",
       services: "خدماتنا",
       contact: "تواصل معنا",
+      clients:"عملائنا",
       requestQuote: "طلب عرض سعر"
     },
 

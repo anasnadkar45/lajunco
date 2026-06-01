@@ -3,6 +3,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageProvider";
 import LanguageToggle from "@/components/common/LanguageToggle";
 import { Button } from "../ui/button";
@@ -43,10 +44,11 @@ export default function Navbar() {
           <Image src={'/logo.png'} alt="Lajun Security Logo" width={80} height={40} />
 
           <div className="hidden items-center gap-8 md:flex">
-            <a className="hover:text-primary transition-all duration-300" href="#home">{t.navbar.home}</a>
-            <a className="hover:text-primary transition-all duration-300" href="#about">{t.navbar.about}</a>
-            <a className="hover:text-primary transition-all duration-300" href="#services">{t.navbar.services}</a>
-            <a className="hover:text-primary transition-all duration-300" href="#contact">{t.navbar.contact}</a>
+            <Link className="hover:text-primary transition-all duration-300" href="/">{t.navbar.home}</Link>
+            <Link className="hover:text-primary transition-all duration-300" href="/about">{t.navbar.about}</Link>
+            <Link className="hover:text-primary transition-all duration-300" href="/services">{t.navbar.services}</Link>
+            <Link className="hover:text-primary transition-all duration-300" href="/clients">{t.navbar.clients || 'Clients'}</Link>
+            <Link className="hover:text-primary transition-all duration-300" href="/contact">{t.navbar.contact}</Link>
           </div>
 
           <Button>{t.navbar.requestQuote}</Button>
