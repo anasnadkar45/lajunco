@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Topbar from "@/components/layout/Topbar";
+import Certificates from "@/components/sections/Certificates";
 import Hero from "@/components/sections/Hero";
 import Image from "next/image";
 
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       {/* <div className="h-20" /> */}
       <Hero />
+      <Certificates />
     </div>
   );
 }

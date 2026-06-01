@@ -13,6 +13,34 @@ export const translations = {
       requestQuote: "Request a Quote"
     },
 
+    certificates: {
+      badge: "Trusted Security Partner",
+      title: "We protect what matters to you",
+      description:
+        "Professional security and guarding services across Saudi Arabia with high standards of discipline and reliability.",
+      documents: [
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+      ]
+    },
     hero: {
       badge: "Trusted Security Partner",
       title: "We protect what matters to you",
@@ -142,6 +170,35 @@ export const translations = {
             "دوريات ميدانية سريعة الاستجابة لتعزيز الأمان والاستقرار في كافة القطاعات.",
         },
       ],
+    },
+
+    certificates: {
+      badge: "Trusted Security Partner",
+      title: "We protect what matters to you",
+      description:
+        "Professional security and guarding services across Saudi Arabia with high standards of discipline and reliability.",
+      documents: [
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+        {
+          title: "Saudi Vision 2030",
+          document: "Certificate1.jpeg"
+        },
+      ]
     },
   }
 } as const;
