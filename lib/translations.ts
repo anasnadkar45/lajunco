@@ -126,36 +126,42 @@ export const translations = {
           description:
             "Managed entry and exit points with smart verification systems and expert gate supervision.",
           image: "lajunImage2.png",
+          link:"/access-control"
         },
         {
           title: "Private Guarding",
           description:
             "Highly trained security teams protecting VIPs, sensitive facilities, and special events.",
           image: "lajunImage3.png",
+          link:"/private-security"
         },
         {
           title: "Facility Protection",
           description:
             "Full building security services that keep operations safe and secure around the clock.",
           image: "lajunImage4.png",
+          link:"/facility-security"
         },
         {
           title: "Security Patrols",
           description:
             "Rapid-response patrol units maintaining safety and stability across all sectors.",
           image: "lajunImage6.png",
+          link:"/security-patrols"
         },
         {
           title: "Monitoring Services",
           description:
             "Advanced CCTV and alarm monitoring to ensure continuous site supervision and fast reaction.",
           image: "lajunImage5.png",
+          link:"monitoring-services"
         },
         {
           title: "Event Security",
           description:
             "Specialized security plans for events, exhibitions, and corporate gatherings.",
           image: "lajunImage1.jpg",
+          link:"/event-security"
         },
       ],
       cta: "View All Services",
@@ -305,36 +311,42 @@ export const translations = {
           description:
             "إدارة احترافية للبوابات والتحقق من الزوار باستخدام أحدث الأنظمة التقنية.",
           image: "lajunImage2.png",
+          link:"/access-control"
         },
         {
           title: "الحراسات الخاصة",
           description:
             "نخبة من الكفاءات الأمنية لحماية المواقع الحساسة وكبار الشخصيات.",
           image: "lajunImage3.png",
+          link:"/private-security"
         },
         {
           title: "حراسات المنشآت",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة بأعلى معايير الجودة.",
           image: "lajunImage4.png",
+          link:"/facility-security"
         },
         {
           title: "الدوريات الأمنية",
           description:
             "دوريات سريعة الاستجابة تعمل على تعزيز الأمان والاستقرار في كافة القطاعات.",
           image: "lajunImage6.png",
+          link:"/security-patrols"
         },
         {
           title: "المراقبة الأمنية",
           description:
             "أنظمة مراقبة ذكية تعمل على مدار الساعة لضمان التغطية الأمنية الشاملة.",
           image: "lajunImage5.png",
+          link:"/monitoring-services"
         },
         {
           title: "تأمين الفعاليات",
           description:
             "حلول أمنية متكاملة لتنظيم وتأمين الحشود في الفعاليات والمؤتمرات.",
           image: "lajunImage1.jpg",
+          link:"/event-security"
         },
       ],
       cta: "عرض جميع الخدمات",

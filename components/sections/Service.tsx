@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useLanguage } from '@/context/LanguageProvider'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 const Service = () => {
   const { dir, t } = useLanguage()
@@ -33,13 +34,14 @@ const Service = () => {
           <div className='mx-auto mt-4 h-1 w-16 rounded-full bg-primary'></div>
         </div>
 
-        <div className='mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'>
+        <div className='mt-12 grid gap-6 gap-y-12 sm:grid-cols-2 xl:grid-cols-3'>
           {service.cards.map((card, index) => (
-            <div
+            <Link
               key={index}
-              className='group overflow-hidden rounded-3xl border border-white/10 bg-white text-slate-950 shadow-lg shadow-slate-950/20 transition hover:-translate-y-1 hover:shadow-2xl'
+              className='relative p-1.5 group rounded-3xl border border-white/10 bg-white shadow-lg shadow-slate-950/20 transition hover:-translate-y-1 hover:shadow-2xl'
+              href={card.link}
             >
-              <div className='relative h-64 overflow-hidden'>
+              <div className='relative h-64 overflow-hidden rounded-2xl'>
                 <Image
                   src={`/images/${card.image}`}
                   alt={card.title}
@@ -47,24 +49,22 @@ const Service = () => {
                   className='object-cover transition duration-500 group-hover:scale-105'
                 />
               </div>
-              <div className='flex flex-col gap-4 p-6'>
-                <div className='flex items-center justify-between gap-3'>
-                  <h3 className='text-lg font-semibold'>{card.title}</h3>
-                  <span className='inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-full bg-primary text-sm font-semibold text-white shimmer'>
-                    {index + 1}
-                  </span>
-                </div>
-                <p className='text-sm leading-7 text-slate-600'>{card.description}</p>
+              <div className='flex flex-col gap-2 text-center px-4'>
+                <h3 className='text-lg font-bold text-secondary'>{card.title}</h3>
+                <p className='text-sm text-primary'>{card.description}</p>
               </div>
-            </div>
+              <span className='absolute left-1/2 -bottom-6 z-10 h-10 w-10 -translate-x-1/2 flex items-center justify-center rounded-full bg-primary text-sm font-bold text-white shimmer'>
+                {index + 1}
+              </span>
+            </Link>
           ))}
         </div>
 
-        <div className='mt-12 flex justify-center'>
+        {/* <div className='mt-12 flex justify-center'>
           <Button variant={'default'} size={'lg'} className="font-semibold text-white">
             {service.cta}
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   )
