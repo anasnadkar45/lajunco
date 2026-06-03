@@ -7,66 +7,14 @@ datasource db {
   provider = "postgresql"
 }
 
-model Admin {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model HeroImage {
-  id        Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   imageUrl  String
   altText   String?
-  isActive  Boolean  @default(true)
-  order     Int      @default(0)
+  isActive  Boolean @default(true)
+  sortOrder Int     @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Service {
-  id          Int      @id @default(autoincrement())
-
-  title       String
-  description String?
-  imageUrl    String?
-  isActive    Boolean  @default(true)
-  order       Int      @default(0)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model JobPost {
-  id           Int      @id @default(autoincrement())
-
-  title        String
-  description  String
-  location     String?
-  jobType      String?  // Full-time, Part-time, Internship, Contract
-  isActive     Boolean  @default(true)
-
-  applications JobApplication[]
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-}
-
-model JobApplication {
-  id          Int      @id @default(autoincrement())
-
-  fullName    String
-  email       String
-  phone       String?
-  resumeUrl   String
-  message     String?
-
-  jobPostId   Int
-  jobPost     JobPost  @relation(fields: [jobPostId], references: [id], onDelete: Cascade)
-
-  createdAt   DateTime @default(now())
 }

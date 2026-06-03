@@ -1,10 +1,12 @@
+// app/api/uploadthing/core.ts
+
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
 async function auth() {
-  // Later replace this with your real admin auth check
+  // Replace this with your real admin session check
   const isAdmin = true;
 
   if (!isAdmin) {
@@ -18,12 +20,15 @@ export const ourFileRouter = {
   heroImageUploader: f({
     image: {
       maxFileSize: "4MB",
-      maxFileCount: 1,
+      maxFileCount: 10,
     },
   })
     .middleware(async () => {
       const user = await auth();
-      return { userId: user.userId };
+
+      return {
+        userId: user.userId,
+      };
     })
     .onUploadComplete(async ({ file }) => {
       return {
