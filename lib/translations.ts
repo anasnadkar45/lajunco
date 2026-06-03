@@ -170,7 +170,7 @@ export const translations = {
       badge: "Our Clients",
       title: "Partners in Success",
       items: [
-        { name: "Red Sea Authority" },
+        { name: "Red Sea Authority",  },
         { name: "Bin Ghati Development" },
         { name: ".Masc Co" },
         { name: "MEEM Facility Management" },

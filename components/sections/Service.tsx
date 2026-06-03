@@ -39,7 +39,7 @@ const Service = () => {
             <Link
               key={index}
               className='relative p-1.5 group rounded-3xl border border-white/10 bg-white shadow-lg shadow-slate-950/20 transition hover:-translate-y-1 hover:shadow-2xl'
-              href={card.link}
+              href={`/services${card.link}`}
             >
               <div className='relative h-64 overflow-hidden rounded-2xl'>
                 <Image

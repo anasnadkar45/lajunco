@@ -5,6 +5,8 @@ import Certificates from "@/components/sections/Certificates";
 import Hero from "@/components/sections/Hero";
 import Service from "@/components/sections/Service";
 import Client from "@/components/sections/Client";
+import Footer from "@/components/layout/Footer";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -18,6 +20,8 @@ export default function Home() {
       <About />
       <Service />
       <Client />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }
