@@ -21,7 +21,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="certificates" className="min-h-screen">
+      <section id="certificates" >
         <Certificates />
       </section>
 
