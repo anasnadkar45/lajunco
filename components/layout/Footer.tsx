@@ -72,7 +72,7 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.25 }}
           className="grid gap-10 md:grid-cols-4"
         >
-          <motion.div variants={footerColumn} className="space-y-5">
+          <motion.div variants={footerColumn as any} className="space-y-5">
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.25 }}
@@ -106,7 +106,7 @@ export default function Footer() {
             </p>
           </motion.div>
 
-          <motion.div variants={footerColumn}>
+          <motion.div variants={footerColumn as any}>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Quick Links
             </p>
@@ -116,7 +116,7 @@ export default function Footer() {
               className="space-y-3 text-sm text-slate-300"
             >
               {navLinks.map((link) => (
-                <motion.li key={link.href} variants={linkItem}>
+                <motion.li key={link.href} variants={linkItem as any}>
                   <Link
                     href={link.href}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
@@ -128,7 +128,7 @@ export default function Footer() {
             </motion.ul>
           </motion.div>
 
-          <motion.div variants={footerColumn}>
+          <motion.div variants={footerColumn as any}>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Services
             </p>
@@ -138,7 +138,7 @@ export default function Footer() {
               className="space-y-3 text-sm text-slate-300"
             >
               {serviceLinks.map((link) => (
-                <motion.li key={link.label} variants={linkItem}>
+                <motion.li key={link.label} variants={linkItem as any}>
                   <Link
                     href={link.href}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
@@ -164,7 +164,7 @@ export default function Footer() {
             </motion.div>
           </motion.div>
 
-          <motion.div variants={footerColumn}>
+          <motion.div variants={footerColumn as any}>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Contact Us
             </p>
@@ -174,7 +174,7 @@ export default function Footer() {
               className="space-y-4 text-sm text-slate-300"
             >
               <motion.div
-                variants={linkItem}
+                variants={linkItem as any}
                 whileHover={{ x: 4 }}
                 className="flex items-start gap-3"
               >
@@ -185,7 +185,7 @@ export default function Footer() {
               </motion.div>
 
               <motion.div
-                variants={linkItem}
+                variants={linkItem as any}
                 whileHover={{ x: 4 }}
                 className="flex items-start gap-3"
               >
