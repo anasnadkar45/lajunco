@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ImageIcon, FileText, BriefcaseBusiness, Users, Phone } from "lucide-react";
 import { requireAdmin } from "@/lib/require-admin";
+import { buttonVariants } from "@/components/ui/button";
 
 const adminCards = [
   {
@@ -30,8 +31,8 @@ const adminCards = [
     icon: Users,
   },
   {
-    title: "Contact Info",
-    description: "Update email, phone number, address and social links.",
+    title: "Contact Messages",
+    description: "Review and manage incoming contact form submissions.",
     href: "/admin/contact",
     icon: Phone,
   },
@@ -42,18 +43,18 @@ export default async function AdminPage() {
   return (
     <div>
       {/* Topbar */}
-      <header className="rounded-2xl border bg-white px-5 py-5 shadow-sm">
+      <header className="rounded-2xl border border-border bg-card px-5 py-5 shadow-sm">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">
               Dashboard
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-slate-950 sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
               Manage Landing Page
             </h2>
 
-            <p className="mt-2 max-w-2xl text-sm text-slate-500">
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
               Update your website content, images, services, client logos
               and contact details from one place.
             </p>
@@ -62,8 +63,8 @@ export default async function AdminPage() {
           <Link
             href="/"
             target="_blank"
-            className="inline-flex w-fit items-center justify-center rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-          >
+            className={buttonVariants({ variant: "default", size:"lg" })}
+  >
             View Website
           </Link>
         </div>
@@ -71,24 +72,24 @@ export default async function AdminPage() {
 
       {/* Stats */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Editable Sections</p>
-          <h3 className="mt-2 text-3xl font-bold text-slate-950">5</h3>
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <p className="text-sm text-muted-foreground">Editable Sections</p>
+          <h3 className="mt-2 text-3xl font-bold text-foreground">5</h3>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Services</p>
-          <h3 className="mt-2 text-3xl font-bold text-slate-950">8</h3>
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <p className="text-sm text-muted-foreground">Services</p>
+          <h3 className="mt-2 text-3xl font-bold text-foreground">8</h3>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Clients</p>
-          <h3 className="mt-2 text-3xl font-bold text-slate-950">12</h3>
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <p className="text-sm text-muted-foreground">Clients</p>
+          <h3 className="mt-2 text-3xl font-bold text-foreground">12</h3>
         </div>
 
-        <div className="rounded-2xl border bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Last Updated</p>
-          <h3 className="mt-2 text-lg font-bold text-slate-950">
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <p className="text-sm text-muted-foreground">Last Updated</p>
+          <h3 className="mt-2 text-lg font-bold text-foreground">
             Today
           </h3>
         </div>
@@ -98,10 +99,10 @@ export default async function AdminPage() {
       <div className="mt-8">
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-bold text-slate-950">
+            <h3 className="text-xl font-bold text-foreground">
               Website Sections
             </h3>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-muted-foreground">
               Choose which section you want to update.
             </p>
           </div>
@@ -115,21 +116,21 @@ export default async function AdminPage() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="group rounded-2xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-950 transition group-hover:bg-slate-950 group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-secondary-foreground transition group-hover:bg-primary group-hover:text-primary-foreground">
                   <Icon size={22} />
                 </div>
 
-                <h4 className="mt-5 text-lg font-bold text-slate-950">
+                <h4 className="mt-5 text-lg font-bold text-foreground">
                   {item.title}
                 </h4>
 
-                <p className="mt-2 text-sm leading-6 text-slate-500">
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   {item.description}
                 </p>
 
-                <span className="mt-5 inline-flex text-sm font-semibold text-slate-950">
+                <span className="mt-5 inline-flex text-sm font-semibold text-foreground transition group-hover:text-primary">
                   Edit Section →
                 </span>
               </Link>

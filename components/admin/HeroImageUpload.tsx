@@ -54,14 +54,19 @@ export default function HeroImageUpload() {
   }
 
   return (
-    <div className="space-y-4 rounded-lg border p-4">
-      <h2 className="text-xl font-semibold">Upload Hero Images</h2>
+    <div className="space-y-4 rounded-md border border-border bg-primary/10 p-4">
+      <div>
+        <h2 className="text-xl font-semibold text-foreground">Upload Hero Images</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Choose one or more hero images and provide optional alt text.
+        </p>
+      </div>
 
       <input
         value={altText}
         onChange={(e) => setAltText(e.target.value)}
         placeholder="Alt text, optional"
-        className="w-full rounded-md border px-3 py-2"
+        className="w-full rounded-2xl border border-border bg-background px-3 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
       />
 
       <UploadDropzone
@@ -79,7 +84,7 @@ export default function HeroImageUpload() {
         }}
       />
 
-      {loading && <p>Saving images...</p>}
+      {loading && <p className="text-sm text-muted-foreground">Saving images...</p>}
     </div>
   );
 }

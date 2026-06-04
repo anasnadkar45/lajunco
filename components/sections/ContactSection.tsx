@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import {
   Briefcase,
   FileText,
@@ -12,11 +12,141 @@ import {
   MessageSquare,
 } from "lucide-react"
 import { useLanguage } from "@/context/LanguageProvider"
+import { UploadButton } from "@/lib/uploadthing";
+
+type ContactPurpose = "quote" | "job" | "inquiry"
+
+type ContactForm = {
+  purpose: ContactPurpose;
+  fullName: string;
+  email: string;
+  phone: string;
+  city: string;
+  company: string;
+  guards: string;
+  message: string;
+  cvFileName: string;
+  cvFileType: string;
+  cvFileUrl: string;
+};
 
 export default function ContactSection() {
-  const [purpose, setPurpose] = useState<"quote" | "job" | "inquiry">("quote")
   const { t } = useLanguage()
   const contact = t.contact
+  const [form, setForm] = useState<ContactForm>({
+    purpose: "quote",
+    fullName: "",
+    email: "",
+    phone: "",
+    city: "",
+    company: "",
+    guards: "",
+    message: "",
+    cvFileName: "",
+    cvFileType: "",
+    cvFileUrl: "",
+  });
+  const [uploadingFile, setUploadingFile] = useState(false);
+  const [submitting, setSubmitting] = useState(false)
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [error, setError] = useState<string | null>(null)
+
+  const handleFieldChange = (field: keyof ContactForm) =>
+    (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: event.target.value }))
+      setStatus("idle")
+      setError(null)
+    }
+
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+
+    if (!file) {
+      setForm((prev) => ({ ...prev, cvFileName: "", cvFileType: "", cvFileData: "" }))
+      setStatus("idle")
+      setError(null)
+      return
+    }
+
+    const fileData = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const result = reader.result
+        if (typeof result === "string") {
+          const commaIndex = result.indexOf(",")
+          resolve(commaIndex >= 0 ? result.slice(commaIndex + 1) : result)
+        } else {
+          reject(new Error("File read failed"))
+        }
+      }
+      reader.onerror = () => reject(reader.error)
+      reader.readAsDataURL(file)
+    })
+
+    setForm((prev) => ({
+      ...prev,
+      cvFileName: file.name,
+      cvFileType: file.type,
+      cvFileData: fileData,
+    }))
+    setStatus("idle")
+    setError(null)
+  }
+
+  const handlePurposeChange = (purpose: ContactPurpose) => {
+    setForm((prev) => ({ ...prev, purpose }))
+    setStatus("idle")
+    setError(null)
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setSubmitting(true)
+    setStatus("idle")
+    setError(null)
+
+    if (!form.fullName.trim() || !form.email.trim() || !form.message.trim()) {
+      setError(contact.form.validationRequired)
+      setStatus("error")
+      setSubmitting(false)
+      return
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        setError(body?.message ?? contact.form.submitError)
+        setStatus("error")
+      } else {
+        setStatus("success")
+        setForm({
+          purpose: form.purpose,
+          fullName: "",
+          email: "",
+          phone: "",
+          city: "",
+          company: "",
+          guards: "",
+          message: "",
+          cvFileName: "",
+          cvFileType: "",
+          cvFileUrl: "",
+        });
+      }
+    } catch (error) {
+      console.error(error)
+      setError(contact.form.submitError)
+      setStatus("error")
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
@@ -32,23 +162,21 @@ export default function ContactSection() {
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               {contact.purposes.map((item) => {
                 const Icon = item.id === "quote" ? Briefcase : item.id === "job" ? FileText : MessageCircle
-                const active = purpose === item.id
+                const active = form.purpose === item.id
 
                 return (
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => setPurpose(item.id)}
-                    className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border px-4 py-5 text-center transition-all duration-200 ${
-                      active
-                        ? "border-primary/80 bg-primary/10 text-slate-950 shadow-sm"
-                        : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
-                    }`}
+                    onClick={() => handlePurposeChange(item.id)}
+                    className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border px-4 py-5 text-center transition-all duration-200 ${active
+                      ? "border-primary/80 bg-primary/10 text-slate-950 shadow-sm"
+                      : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
+                      }`}
                   >
                     <span
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl ${
-                        active ? "bg-primary text-slate-950" : "bg-slate-100 text-slate-600"
-                      }`}
+                      className={`flex h-11 w-11 items-center justify-center rounded-2xl ${active ? "bg-primary text-slate-950" : "bg-slate-100 text-slate-600"
+                        }`}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
@@ -58,10 +186,13 @@ export default function ContactSection() {
               })}
             </div>
 
-            <form className="mt-8 grid gap-4 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="mt-8 grid gap-4 sm:grid-cols-2">
               <label className="space-y-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.fullName}</span>
                 <input
+                  name="fullName"
+                  value={form.fullName}
+                  onChange={handleFieldChange("fullName")}
                   type="text"
                   placeholder={contact.form.namePlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -71,6 +202,9 @@ export default function ContactSection() {
               <label className="space-y-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.email}</span>
                 <input
+                  name="email"
+                  value={form.email}
+                  onChange={handleFieldChange("email")}
                   type="email"
                   placeholder={contact.form.emailPlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -80,6 +214,9 @@ export default function ContactSection() {
               <label className="space-y-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.phone}</span>
                 <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleFieldChange("phone")}
                   type="tel"
                   placeholder={contact.form.phonePlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -89,6 +226,9 @@ export default function ContactSection() {
               <label className="space-y-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.city}</span>
                 <input
+                  name="city"
+                  value={form.city}
+                  onChange={handleFieldChange("city")}
                   type="text"
                   placeholder={contact.form.cityPlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -98,6 +238,9 @@ export default function ContactSection() {
               <label className="space-y-2 sm:col-span-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.company}</span>
                 <input
+                  name="company"
+                  value={form.company}
+                  onChange={handleFieldChange("company")}
                   type="text"
                   placeholder={contact.form.companyPlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -107,36 +250,124 @@ export default function ContactSection() {
               <label className="space-y-2 sm:col-span-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.guards}</span>
                 <input
+                  name="guards"
+                  value={form.guards}
+                  onChange={handleFieldChange("guards")}
                   type="text"
                   placeholder={contact.form.guardsPlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
                 />
               </label>
 
-              {purpose === "job" ? (
-                <label className="space-y-2 sm:col-span-2">
-                  <span className="text-sm font-medium text-slate-700">{contact.form.attachCV}</span>
-                  <input
-                    type="file"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition file:mr-4 file:border-0 file:bg-slate-100 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-slate-700"
+              {form.purpose === "job" ? (
+                <div className="space-y-3 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 sm:col-span-2">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-700">
+                      {contact.form.attachCV}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      Upload your CV in PDF, DOC, or DOCX format.
+                    </p>
+                  </div>
+
+                  <UploadButton
+                    endpoint="fileUploader"
+                    onUploadBegin={() => {
+                      setUploadingFile(true);
+                      setStatus("idle");
+                      setError(null);
+                    }}
+                    onClientUploadComplete={(res) => {
+                      const uploadedFile = res?.[0];
+
+                      if (!uploadedFile) {
+                        setUploadingFile(false);
+                        return;
+                      }
+
+                      setForm((prev) => ({
+                        ...prev,
+                        cvFileName: uploadedFile.name,
+                        cvFileType: uploadedFile.type || "",
+                        cvFileUrl: uploadedFile.ufsUrl,
+                      }));
+
+                      setUploadingFile(false);
+                    }}
+                    onUploadError={(error) => {
+                      console.error(error);
+                      setUploadingFile(false);
+                      setStatus("error");
+                      setError("File upload failed. Please try again.");
+                    }}
+                    appearance={{
+                      button:
+                        "rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-primary/90",
+                      allowedContent: "text-xs text-slate-500",
+                    }}
                   />
-                </label>
+
+                  {uploadingFile ? (
+                    <p className="text-xs text-slate-500">Uploading file...</p>
+                  ) : null}
+
+                  {form.cvFileName ? (
+                    <div className="flex items-center justify-between gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                      <div>
+                        <p className="text-sm font-medium text-emerald-800">
+                          {form.cvFileName}
+                        </p>
+                        <p className="text-xs text-emerald-600">File uploaded successfully</p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setForm((prev) => ({
+                            ...prev,
+                            cvFileName: "",
+                            cvFileType: "",
+                            cvFileUrl: "",
+                          }))
+                        }
+                        className="text-xs font-semibold text-red-600 hover:text-red-700"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
 
               <label className="space-y-2 sm:col-span-2">
                 <span className="text-sm font-medium text-slate-700">{contact.form.message}</span>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleFieldChange("message")}
                   rows={5}
                   placeholder={contact.form.messagePlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
                 />
               </label>
 
+              {status === "error" && error ? (
+                <p className="sm:col-span-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>
+              ) : null}
+              {status === "success" ? (
+                <p className="sm:col-span-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{contact.form.submitSuccess}</p>
+              ) : null}
+
               <button
                 type="submit"
-                className="sm:col-span-2 rounded-2xl bg-primary px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-primary/90"
+                disabled={submitting || uploadingFile}
+                className="sm:col-span-2 rounded-2xl bg-primary px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {contact.form.submit}
+                {submitting
+                  ? contact.form.submitting
+                  : uploadingFile
+                    ? "Uploading file..."
+                    : contact.form.submit}
               </button>
             </form>
           </div>

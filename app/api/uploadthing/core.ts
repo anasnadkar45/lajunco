@@ -36,6 +36,26 @@ export const ourFileRouter = {
         name: file.name,
       };
     }),
+
+  fileUploader: f({
+    blob: {
+      maxFileSize: "8MB",
+      maxFileCount: 1,
+    },
+  })
+    .middleware(async () => {
+      const user = await auth();
+
+      return {
+        userId: user.userId,
+      };
+    })
+    .onUploadComplete(async ({ file }) => {
+      return {
+        url: file.ufsUrl,
+        name: file.name,
+      };
+    }),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;

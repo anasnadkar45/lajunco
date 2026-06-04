@@ -18,3 +18,22 @@ model HeroImage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model ContactMessage {
+  id Int @id @default(autoincrement())
+
+  purpose    String
+  fullName   String
+  email      String
+  phone      String?
+  city       String?
+  company    String?
+  guards     String?
+  message    String
+
+  cvFileName String?
+  cvFileType String?
+  cvFileUrl  String?
+
+  createdAt DateTime @default(now())
+}

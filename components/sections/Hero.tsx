@@ -3,13 +3,99 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageProvider";
 import { Button } from "../ui/button";
+import Image from "next/image";
+
+type HeroSlide = {
+  id?: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  imageUrl: string;
+  altText?: string | null;
+};
 
 export default function Hero() {
   const { lang, dir, t } = useLanguage();
-  const slides = t.hero.slides;
+  const defaultSlides = t.hero.slides;
+  const [slides, setSlides] = useState<HeroSlide[]>(() => {
+    // Map default slides to HeroSlide format
+    return (defaultSlides as unknown as any[]).map((slide) => ({
+      title: slide.title,
+      subtitle: slide.subtitle,
+      description: slide.description,
+      imageUrl: `/images/${slide.image}`,
+      altText: slide.subtitle,
+    }));
+  });
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const slideDuration = 7000;
+
+  // Fetch hero images from database
+  useEffect(() => {
+    async function fetchHeroImages() {
+      try {
+        const res = await fetch("/api/admin/hero-images");
+        const data = await res.json();
+
+        if (data.success && data.images && data.images.length > 0) {
+          // Convert default slides to array for easier access
+          const defaultArray = defaultSlides as unknown as any[];
+
+          // Map database images to slide format, rotating through default content
+          const dbSlides: HeroSlide[] = data.images.map(
+            (
+              image: {
+                id: number;
+                imageUrl: string;
+                altText?: string | null;
+              },
+              index: number
+            ) => {
+              const defaultSlideContent =
+                defaultArray[index % defaultArray.length];
+              return {
+                id: image.id,
+                title: defaultSlideContent?.title || "Hero Title",
+                subtitle: defaultSlideContent?.subtitle || "Hero Subtitle",
+                description:
+                  defaultSlideContent?.description || "Hero Description",
+                imageUrl: image.imageUrl,
+                altText: image.altText || "Hero image",
+              };
+            }
+          );
+
+          // Get remaining default slides to reach 6 total
+          const remainingDefaultSlides = defaultArray.slice(
+            dbSlides.length % defaultArray.length
+          );
+          const defaultHeroSlides: HeroSlide[] = remainingDefaultSlides.map(
+            (slide) => ({
+              title: slide.title,
+              subtitle: slide.subtitle,
+              description: slide.description,
+              imageUrl: `/images/${slide.image}`,
+              altText: slide.subtitle,
+            })
+          );
+
+          // Combine database slides with remaining default slides to make 6 total
+          const combinedSlides = [
+            ...dbSlides,
+            ...defaultHeroSlides,
+          ].slice(0, 6);
+
+          setSlides(combinedSlides);
+        }
+      } catch (error) {
+        console.error("Failed to fetch hero images:", error);
+        // Keep default slides on error
+      }
+    }
+
+    fetchHeroImages();
+  }, [defaultSlides]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -33,11 +119,23 @@ export default function Hero() {
 
   const activeSlide = slides[currentSlide];
 
+  if (!activeSlide) {
+    return null;
+  }
+
+  // Use database imageUrl if available, otherwise fall back to default
+  const imageSource =
+    activeSlide.imageUrl && activeSlide.imageUrl.startsWith("http")
+      ? activeSlide.imageUrl
+      : activeSlide.imageUrl || `/images/placeholder.jpg`;
+
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <img
-        src={`/images/${activeSlide.image}`}
-        alt={lang === "en" ? activeSlide.subtitle : activeSlide.title}
+      <Image
+        src={imageSource}
+        alt={activeSlide.altText || activeSlide.title}
+        width={1920}
+        height={1080}
         className="absolute inset-0 h-full w-full object-cover transition duration-1000 ease-out"
       />
 
@@ -49,8 +147,8 @@ export default function Hero() {
             style={{ animation: "scan 7s linear infinite" }}
           />
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950/90 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950/90 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-slate-950/90 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-slate-950/90 to-transparent" />
       </div>
 
       <div className="absolute inset-0 bg-slate-950/60 " />
@@ -88,7 +186,7 @@ export default function Hero() {
         <div className="mb-4 flex justify-center gap-3">
           {slides.map((slide, index) => (
             <button
-              key={`${slide.subtitle}-${index}`}
+              key={`${slide.id || index}`}
               type="button"
               onClick={() => setCurrentSlide(index)}
               className={`h-3 w-3 rounded-full transition ${index === currentSlide ? "bg-primary" : "bg-white/30"}`}
