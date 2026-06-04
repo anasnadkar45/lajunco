@@ -195,10 +195,10 @@ const Service = () => {
                     className="relative h-full w-full"
                   >
                     <Image
-                      src={`/images/${card.image}`}
+                      src={`/services/${card.image}`}
                       alt={card.title}
                       fill
-                      className="object-cover"
+                      className="object-cover grayscale-0 group-hover:grayscale transition duration-500"
                     />
                   </motion.div>
 

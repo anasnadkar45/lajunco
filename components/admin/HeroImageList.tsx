@@ -63,7 +63,7 @@ export default function HeroImageList({ initialImages }: HeroImageListProps) {
       {images.map((image) => (
         <div key={image.id} className="overflow-hidden rounded-md border border-border bg-card">
           <div className="relative aspect-video bg-slate-950/5">
-            <Image
+            <Image loading="lazy"
               src={image.imageUrl}
               alt={image.altText ?? "Hero image"}
               fill

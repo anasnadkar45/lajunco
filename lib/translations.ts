@@ -73,11 +73,11 @@ export const translations = {
       description:
         "All licenses and certificates are issued by the official government authorities in the Kingdom of Saudi Arabia.",
       documents: [
-        { title: "Commercial Registration", document: "Certificate1.jpeg" },
-        { title: "Official License", document: "Certificate2.png" },
-        { title: "Government Certificate", document: "Certificate3.png" },
-        { title: "Security Certificate", document: "Certificate4.png" },
-        { title: "Compliance Certificate", document: "Certificate5.png" },
+        { title: "Business Activity License", document: "Certificate1.jpeg" },
+        { title: "Registration Certificate", document: "Certificate2.png" },
+        { title: "VAT Certificate", document: "Certificate3.png" },
+        { title: "GOSI Certificate", document: "Certificate4.png" },
+        { title: "Commercial Registration", document: "Certificate5.png" },
       ],
     },
 
@@ -133,42 +133,42 @@ export const translations = {
           title: "Facility Security",
           description:
             "Comprehensive protection for buildings and facilities with movement control and discipline.",
-          image: "lajunImage4.png",
+          image: "FacilitySecurity.png",
           link: "/facility-security",
         },
         {
           title: "Access Control",
           description:
             "Gate management, visitor verification, vehicle access control, and goods screening.",
-          image: "lajunImage2.png",
+          image: "AccessControl.png",
           link: "/access-control",
         },
         {
           title: "Security Patrols",
           description:
             "Continuous field patrols to ensure high levels of safety and fast incident response.",
-          image: "lajunImage6.png",
+          image: "SecurityPatrol.png",
           link: "/security-patrols",
         },
         {
           title: "Event Security",
           description:
             "Organizing and securing events and occasions with high efficiency.",
-          image: "lajunImage1.jpg",
+          image: "EventSecurity.png",
           link: "/event-security",
         },
         {
           title: "Surveillance Systems",
           description:
             "Site monitoring using CCTV cameras, control rooms, and smart monitoring systems.",
-          image: "lajunImage5.png",
+          image: "SurveillanceSystems.png",
           link: "/monitoring-services",
         },
         {
           title: "Private Security",
           description:
             "Customized security services for sensitive locations and private facilities.",
-          image: "lajunImage3.png",
+          image: "PrivateSecurity.png",
           link: "/private-security",
         },
       ],
@@ -475,11 +475,11 @@ export const translations = {
       description:
         "جميع التراخيص والشهادات صادرة من الجهات الحكومية المختصة في المملكة العربية السعودية.",
       documents: [
-        { title: "السجل التجاري", document: "Certificate1.jpeg" },
-        { title: "ترخيص رسمي", document: "Certificate2.png" },
-        { title: "شهادة حكومية", document: "Certificate3.png" },
-        { title: "شهادة أمنية", document: "Certificate4.png" },
-        { title: "شهادة امتثال", document: "Certificate5.png" },
+        { title: "رخصة نشاط تجاري", document: "Certificate1.jpeg" },
+        { title: "شهادة التسجيل", document: "Certificate2.png" },
+        { title: "شهادة ضريبة القيمة المضافة", document: "Certificate3.png" },
+        { title: "شهادة التأمينات الاجتماعية", document: "Certificate4.png" },
+        { title: "السجل التجاري", document: "Certificate5.png" },
       ],
     },
 
