@@ -229,4 +229,8 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Cairo is applied globally via next/font variable */
