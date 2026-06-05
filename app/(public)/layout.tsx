@@ -8,7 +8,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         <div className='min-h-screen'>
             <Topbar />
             <Navbar />
-            <div className='mt-20'>
+            <div className='mt-24'>
                 {children}
             </div>
             <Footer />
