@@ -11,6 +11,8 @@ export const translations = {
       services: "Services",
       contact: "Contact",
       clients: "Clients",
+      legal: "Legal",
+      operations: "Operations Overview",
       requestQuote: "Request a Quote",
     },
 
@@ -281,6 +283,23 @@ export const translations = {
     },
 
     serviceDetails: {
+      facilitySecurity: {
+        title: "Facility Security",
+        description:
+          "Comprehensive protection for buildings and facilities with disciplined access control, movement management, field supervision, and high-quality security standards to ensure a safe and organized environment.",
+        features: [
+          "Building Protection",
+          "Access Monitoring",
+          "Field Supervision",
+          "Incident Response",
+        ],
+        categories: [
+          "Commercial Buildings",
+          "Residential Facilities",
+          "Administrative Sites",
+          "Industrial Facilities",
+        ],
+      },
       accessControl: {
         title: "Access Control System",
         description:
@@ -401,6 +420,65 @@ export const translations = {
         { name: "PMDC (Bin Laden)" },
       ],
     },
+    legalInformation: {
+      badge: "Legal Information",
+      title: "Legal Information",
+      description:
+        "All information below is officially registered and certified with the relevant governmental authorities in the Kingdom of Saudi Arabia.",
+      info: [
+        {
+          key: "unifiedNumber",
+          label: "Unified National Number",
+          value: "7048767847",
+        },
+        {
+          key: "licenseNumber",
+          label: "License Number",
+          value: "2611000002",
+        },
+        {
+          key: "taxNumber",
+          label: "Tax Number",
+          value: "312840013800003",
+        },
+        {
+          key: "commercialRegistration",
+          label: "Commercial Registration",
+          value: "1009190178",
+        },
+        {
+          key: "address",
+          label: "Address",
+          value: "Riyadh - Al Rawdah Dist.",
+        },
+        {
+          key: "phone",
+          label: "Phone",
+          value: "053 307 0700",
+        },
+      ],
+      website: {
+        label: "Website",
+        value: "https://lajunco.com/",
+        button: "Visit Website",
+      },
+      location: {
+        label: "Company Location",
+        value: "https://www.google.com/maps/@24.7295903,46.7685524,19m",
+        button: "Open Location on Map",
+      },
+      values: [
+        {
+          label: "Verified Data",
+        },
+        {
+          label: "Transparency",
+        },
+        {
+          label: "Compliance",
+        },
+      ],
+    },
   },
 
   ar: {
@@ -413,6 +491,8 @@ export const translations = {
       services: "خدماتنا",
       contact: "تواصل معنا",
       clients: "عملائنا",
+      legal: "قانوني",
+      operations: "نظرة عامة على العمليات",
       requestQuote: "طلب عرض سعر",
     },
 
@@ -535,42 +615,42 @@ export const translations = {
           title: "حراسات المنشآت",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط.",
-          image: "lajunImage4.png",
+          image: "FacilitySecurity.png",
           link: "/facility-security",
         },
         {
           title: "تنظيم الدخول والخروج",
           description:
             "إدارة البوابات والتحقق من الزوار وتنظيم دخول المركبات وفحص البضائع.",
-          image: "lajunImage2.png",
+          image: "AccessControl.png",
           link: "/access-control",
         },
         {
           title: "الدوريات الأمنية",
           description:
             "دوريات ميدانية مستمرة لضمان أعلى مستوى من الأمان وسرعة الاستجابة.",
-          image: "lajunImage6.png",
+          image: "SecurityPatrol.png",
           link: "/security-patrols",
         },
         {
           title: "تأمين الفعاليات",
           description:
             "تنظيم وتأمين الفعاليات والمناسبات بكفاءة عالية.",
-          image: "lajunImage1.jpg",
+          image: "EventSecurity.png",
           link: "/event-security",
         },
         {
           title: "المراقبة الأمنية",
           description:
             "متابعة المواقع باستخدام الكاميرات وغرف التحكم وأنظمة المراقبة.",
-          image: "lajunImage5.png",
+          image: "SurveillanceSystems.png",
           link: "/monitoring-services",
         },
         {
           title: "الحراسات الخاصة",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة.",
-          image: "lajunImage3.png",
+          image: "PrivateSecurity.png",
           link: "/private-security",
         },
       ],
@@ -587,6 +667,66 @@ export const translations = {
         "المستودعات والمجمعات اللوجستية",
         "المجمعات التعليمية",
         "المدارس والمراكز التجارية",
+      ],
+    },
+
+    legalInformation: {
+      badge: "البيانات القانونية",
+      title: "البيانات القانونية",
+      description:
+        "جميع المعلومات أدناه مسجلة ومعتمدة لدى الجهات الحكومية المختصة في المملكة العربية السعودية.",
+      info: [
+        {
+          key: "unifiedNumber",
+          label: "الرقم الموحد",
+          value: "7048767847",
+        },
+        {
+          key: "licenseNumber",
+          label: "رقم الترخيص",
+          value: "2611000002",
+        },
+        {
+          key: "taxNumber",
+          label: "الرقم الضريبي",
+          value: "312840013800003",
+        },
+        {
+          key: "commercialRegistration",
+          label: "السجل التجاري",
+          value: "1009190178",
+        },
+        {
+          key: "address",
+          label: "العنوان",
+          value: "الرياض - حي الروضة",
+        },
+        {
+          key: "phone",
+          label: "الهاتف",
+          value: "053 307 0700",
+        },
+      ],
+      website: {
+        label: "الموقع الإلكتروني",
+        value: "https://lajunco.com/",
+        button: "زيارة الموقع",
+      },
+      location: {
+        label: "موقع الشركة",
+        value: "https://www.google.com/maps/@24.7295903,46.7685524,19m",
+        button: "فتح الموقع على الخريطة",
+      },
+      values: [
+        {
+          label: "بيانات موثقة",
+        },
+        {
+          label: "شفافية",
+        },
+        {
+          label: "التزام",
+        },
       ],
     },
 
@@ -683,6 +823,23 @@ export const translations = {
     },
 
     serviceDetails: {
+      facilitySecurity: {
+        title: "حراسات المنشآت",
+        description:
+          "حماية شاملة للمباني والمنشآت من خلال تنظيم الدخول والخروج وإدارة الحركة والإشراف الميداني وتطبيق أعلى معايير الجودة الأمنية لضمان بيئة آمنة ومنظمة.",
+        features: [
+          "حماية المباني",
+          "مراقبة الدخول",
+          "إشراف ميداني",
+          "الاستجابة للحوادث",
+        ],
+        categories: [
+          "المباني التجارية",
+          "المنشآت السكنية",
+          "المواقع الإدارية",
+          "المنشآت الصناعية",
+        ],
+      },
       accessControl: {
         title: "نظام تنظيم الدخول والخروج",
         description:
@@ -803,7 +960,9 @@ export const translations = {
         { name: "PMDC (بن لادن)" },
       ],
     },
+
   },
+
 } as const;
 
 export type Language = keyof typeof translations;

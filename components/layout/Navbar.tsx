@@ -22,8 +22,10 @@ export default function Navbar() {
     { label: t.navbar.home, href: "/" },
     { label: t.navbar.about, href: "/about" },
     { label: t.navbar.services, href: "/services" },
-    { label: t.navbar.clients || "Clients", href: "/clients" },
+    // { label: t.navbar.clients || "Clients", href: "/clients" },
     { label: t.navbar.contact, href: "/contact" },
+    { label: t.navbar.legal, href: "/legal" },
+    { label: t.navbar.operations, href: "/operations" },
   ];
 
   useEffect(() => {

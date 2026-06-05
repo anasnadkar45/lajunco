@@ -1,105 +1,146 @@
-import Topbar from "@/components/layout/Topbar";
-import Navbar from "@/components/layout/Navbar";
+// app/about/page.tsx
+
+"use client";
+
 import About from "@/components/sections/About";
-import PageHeader from "@/components/common/PageHeader";
+import { useLanguage } from "@/context/LanguageProvider";
+import { BadgeCheck, Eye, Flag, ShieldCheck, Users } from "lucide-react";
 
 export default function AboutPage() {
-    return (
-        <div className="min-h-screen">
-            <Topbar />
-            <Navbar />
-            {/* <PageHeader title="About LAJUN Security" subtitle="Company Profile" /> */}
-            <About />
+  const { t, dir } = useLanguage();
 
-            <section className="bg-white py-16">
-                <div className="mx-auto max-w-6xl px-6">
-                    <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-                        <div className="space-y-6">
-                            <p className="text-sm uppercase tracking-[0.35em] text-primary">Lajoun Security and Guarding Company</p>
-                            <p className="text-lg leading-8 text-slate-700">
-                                A Saudi company specializing in providing integrated security solutions for all sectors.
-                                We started with a clear objective: to build a professional security system that aligns with the
-                                requirements of the Kingdom's Vision 2030 and meets the growing needs of the Saudi market.
-                                Today, we have a presence in all thirteen regions of the Kingdom, serving hundreds of clients in
-                                the industrial, commercial, and governmental sectors.
-                            </p>
+  return (
+    <main dir={dir} className="min-h-screen bg-white">
+      <About />
 
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
-                                <h2 className="text-2xl font-semibold text-slate-900">Vision</h2>
-                                <p className="mt-3 text-slate-700">
-                                    To be the trusted security choice for various establishments and sectors, by providing professional
-                                    security guard services based on discipline, readiness, and rapid response, which contributes to
-                                    enhancing safety, protecting individuals and property, and raising the level of confidence of our clients.
-                                </p>
-                            </div>
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/70">
+              {t.about.badge}
+            </p>
 
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
-                                <h2 className="text-2xl font-semibold text-slate-900">Message</h2>
-                                <p className="mt-3 text-slate-700">
-                                    Providing high-quality security solutions through qualified personnel, disciplined operating methodologies,
-                                    and effective field supervision, ensuring continuity of performance, raising protection efficiency, and providing
-                                    a reliable security experience that reflects the professionalism of our clients and maintains the safety of their facilities.
-                                </p>
-                            </div>
+            <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-primary md:text-5xl">
+              {t.about.title}
+            </h1>
 
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
-                                <h2 className="text-2xl font-semibold text-slate-900">Management Team</h2>
-                                <p className="mt-3 text-slate-700">
-                                    Lujon leads a team of Saudi specialists with extensive experience in security, military and administrative fields,
-                                    united by a shared passion for developing the national security system and providing the best security solutions for the Saudi market.
-                                </p>
-                            </div>
-                        </div>
+            <div className="mx-auto mt-6 flex max-w-xs items-center gap-4">
+              <span className="h-px flex-1 bg-primary" />
+              <span className="h-3 w-3 rotate-45 bg-primary" />
+              <span className="h-px flex-1 bg-primary" />
+            </div>
+          </div>
 
-                        <div className="space-y-6 rounded-3xl border border-slate-200 bg-slate-950 p-8 text-white shadow-lg">
-                            <p className="text-sm uppercase tracking-[0.35em] text-primary">شركة لجون للأمن والحراسة</p>
-                            <p className="text-lg leading-8">
-                                شركة سعودية متخصصة في تقديم الحلول الأمنية المتكاملة لجميع القطاعات.
-                            </p>
-                            <p className="text-lg leading-8">
-                                انطلقنا بهدف واضح: بناء منظومة أمنية احترافية تواكب متطلبات رؤية المملكة 2030 وتلبي الاحتياجات المتنامية للسوق السعودي.
-                            </p>
-                            <p className="text-lg leading-8">
-                                نمتلك اليوم حضورًا في جميع مناطق المملكة الثلاث عشرة، ونخدم مئات العملاء في القطاعات الصناعية والتجارية والحكومية.
-                            </p>
-
-                            <div className="mt-6 space-y-4 rounded-3xl bg-slate-900/90 p-6">
-                                <div>
-                                    <h3 className="text-xl font-semibold">الرؤية</h3>
-                                    <p className="mt-2 leading-7 text-slate-300">
-                                        أن نكون الخيار الأمني الموثوق للمنشآت والقطاعات المختلفة، من خلال تقديم خدمات حراسات أمنية احترافية
-                                        ترتكز على الانضباط والجاهزية، وسرعة الاستجابة، بما يسهم في تعزيز السلامة وحماية الأفراد والممتلكات ورفع مستوى ثقة عملائنا.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold">الرسالة</h3>
-                                    <p className="mt-2 leading-7 text-slate-300">
-                                        تقديم حلول أمنية عالية الجودة من خلال كوادر مؤهلة، ومنهجيات تشغيل منضبطة، وإشراف ميداني فعال، بما يضمن استمرارية الأداء،
-                                        ورفع كفاءة الحماية، وتقديم تجربة أمنية موثوقة تعكس احترافية عملائنا وتحافظ على سلامة منشآتهم.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold">فريق الإدارة</h3>
-                                    <p className="mt-2 leading-7 text-slate-300">
-                                        يقود لجون فريق من المتخصصين السعوديين ذوي الخبرة الواسعة في المجالات الأمنية والعسكرية والإدارية، يجمعهم شغف مشترك بتطوير منظومة الأمن الوطني وتقديم أفضل الحلول الأمنية للسوق السعودي.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold">قيمنا الأساسية</h3>
-                                    <ul className="mt-3 space-y-2 leading-7 text-slate-300">
-                                        <li>الاحترافية - نلتزم بأعلى معايير الأداء المهني في جميع أعمالنا.</li>
-                                        <li>الانضباط - نطبق منهجية تشغيل دقيقة تضمن تنفيذ المهام بكفاءة.</li>
-                                        <li>الثقة - نبني علاقاتنا مع عملائنا على المصداقية والالتزام.</li>
-                                        <li>الجاهزية - نمتلك فرقاً جاهزة للتعامل مع مختلف الظروف.</li>
-                                        <li>المسؤولية - نؤدي مهامنا بحس عالٍ من الالتزام والمسؤولية.</li>
-                                        <li>الجودة - نحرص على تقديم خدمات مستقرة وذات جودة عالية.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+          {/* About Details */}
+          <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <div className="space-y-4">
+              {t.about.description.map((paragraph) => (
+                <div
+                  key={paragraph}
+                  className="rounded-3xl border-2 border-primary bg-secondary p-6 shadow-sm"
+                >
+                  <div className="flex gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-secondary">
+                      <ShieldCheck size={24} />
                     </div>
+
+                    <p className="text-base font-medium leading-8 text-primary/80">
+                      {paragraph}
+                    </p>
+                  </div>
                 </div>
-            </section>
+              ))}
+            </div>
+
+            {/* Company Summary Card */}
+            <div className="rounded-3xl border-2 border-primary bg-primary p-8 text-secondary shadow-lg">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-primary">
+                <Users size={30} />
+              </div>
+
+              <p className="mt-6 text-sm font-bold uppercase tracking-[0.25em] text-secondary/70">
+                {t.visionMission.badge}
+              </p>
+
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
+                {t.visionMission.title}
+              </h2>
+
+              <p className="mt-5 text-sm leading-7 text-secondary/80">
+                {t.whyLajun.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Vision Mission */}
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <InfoCard
+              icon={Eye}
+              title={t.visionMission.visionTitle}
+              description={t.visionMission.vision}
+            />
+
+            <InfoCard
+              icon={Flag}
+              title={t.visionMission.missionTitle}
+              description={t.visionMission.mission}
+            />
+          </div>
+
+          {/* Values */}
+          <div className="mt-16 rounded-3xl border-2 border-primary bg-secondary p-6 md:p-8">
+            <div className="text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/70">
+                {t.values.badge}
+              </p>
+
+              <h2 className="mt-3 text-3xl font-extrabold text-primary md:text-4xl">
+                {t.values.title}
+              </h2>
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {t.values.items.map((value) => (
+                <div
+                  key={value}
+                  className="flex items-center gap-4 rounded-2xl border-2 border-primary bg-white p-5"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-secondary">
+                    <BadgeCheck size={24} />
+                  </div>
+
+                  <h3 className="text-lg font-bold text-primary">{value}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-    );
+      </section>
+    </main>
+  );
+}
+
+function InfoCard({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="rounded-3xl border-2 border-primary bg-secondary p-8 shadow-sm">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-secondary">
+        <Icon size={30} />
+      </div>
+
+      <h2 className="mt-6 text-2xl font-extrabold text-primary">{title}</h2>
+
+      <p className="mt-4 text-base font-medium leading-8 text-primary/80">
+        {description}
+      </p>
+    </div>
+  );
 }
