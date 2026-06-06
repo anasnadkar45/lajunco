@@ -12,24 +12,24 @@ const adminCards = [
     href: "/admin/hero",
     icon: ImageIcon,
   },
-  {
-    title: "About Section",
-    description: "Edit company introduction and about page content.",
-    href: "/admin/about",
-    icon: FileText,
-  },
-  {
-    title: "Services",
-    description: "Add, edit or remove landing page services.",
-    href: "/admin/services",
-    icon: BriefcaseBusiness,
-  },
-  {
-    title: "Clients",
-    description: "Manage client logos, names and showcase section.",
-    href: "/admin/clients",
-    icon: Users,
-  },
+  // {
+  //   title: "About Section",
+  //   description: "Edit company introduction and about page content.",
+  //   href: "/admin/about",
+  //   icon: FileText,
+  // },
+  // {
+  //   title: "Services",
+  //   description: "Add, edit or remove landing page services.",
+  //   href: "/admin/services",
+  //   icon: BriefcaseBusiness,
+  // },
+  // {
+  //   title: "Clients",
+  //   description: "Manage client logos, names and showcase section.",
+  //   href: "/admin/clients",
+  //   icon: Users,
+  // },
   {
     title: "Contact Messages",
     description: "Review and manage incoming contact form submissions.",
@@ -71,7 +71,7 @@ export default async function AdminPage() {
       </header>
 
       {/* Stats */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      {/* <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
           <p className="text-sm text-muted-foreground">Editable Sections</p>
           <h3 className="mt-2 text-3xl font-bold text-foreground">5</h3>
@@ -93,7 +93,7 @@ export default async function AdminPage() {
             Today
           </h3>
         </div>
-      </div>
+      </div> */}
 
       {/* Cards */}
       <div className="mt-8">

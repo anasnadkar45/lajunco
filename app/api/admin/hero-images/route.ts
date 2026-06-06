@@ -1,122 +1,96 @@
-﻿// app/api/admin/hero-images/route.ts
+﻿import prisma from '@/lib/prisma'
+import { NextRequest, NextResponse } from 'next/server'
 
-import { NextResponse } from "next/server";
-import { verifyAdminSession } from "@/lib/admin-session";
-import prisma from "@/lib/prisma";
-
+// GET /api/admin/hero-images - Fetch all hero images sorted by sortOrder
 export async function GET() {
   try {
     const images = await prisma.heroImage.findMany({
-      where: {
-        isActive: true,
-      },
-      orderBy: {
-        sortOrder: "asc",
-      },
-      take: 6,
-      select: {
-        id: true,
-        imageUrl: true,
-        altText: true,
-      },
-    });
-
-    return NextResponse.json({
-      success: true,
-      images,
-    });
+      where: { isActive: true },
+      orderBy: { sortOrder: 'asc' },
+    })
+    return NextResponse.json(images)
   } catch (error) {
+    console.error('Error fetching hero images:', error)
     return NextResponse.json(
-      { message: "Failed to fetch images" },
+      { error: 'Failed to fetch hero images' },
       { status: 500 }
-    );
+    )
   }
 }
 
-export async function POST(req: Request) {
-  const isAdmin = await verifyAdminSession();
-
-  if (!isAdmin) {
-    return NextResponse.json(
-      { message: "Unauthorized" },
-      { status: 401 }
-    );
-  }
-
-  const body = await req.json();
-
-  const images = body.images;
-
-  if (!Array.isArray(images) || images.length === 0) {
-    return NextResponse.json(
-      { message: "Images are required" },
-      { status: 400 }
-    );
-  }
-
-  const lastImage = await prisma.heroImage.findFirst({
-    orderBy: {
-      sortOrder: "desc",
-    },
-  });
-
-  const startOrder = lastImage ? lastImage.sortOrder + 1 : 0;
-
-  const createdImages = await prisma.heroImage.createMany({
-    data: images.map(
-      (
-        image: {
-          imageUrl: string;
-          altText?: string;
-        },
-        index: number
-      ) => ({
-        imageUrl: image.imageUrl,
-        altText: image.altText || null,
-        sortOrder: startOrder + index,
-      })
-    ),
-  });
-
-  return NextResponse.json({
-    success: true,
-    count: createdImages.count,
-  });
-}
-
-export async function DELETE(req: Request) {
-  const isAdmin = await verifyAdminSession();
-
-  if (!isAdmin) {
-    return NextResponse.json(
-      { message: "Unauthorized" },
-      { status: 401 }
-    );
-  }
-
-  const body = await req.json();
-  const id = body?.id;
-
-  if (typeof id !== "number") {
-    return NextResponse.json(
-      { message: "Valid image id is required" },
-      { status: 400 }
-    );
-  }
-
+// POST /api/admin/hero-images - Create one or more hero images
+export async function POST(request: NextRequest) {
   try {
-    const deletedImage = await prisma.heroImage.delete({
-      where: { id },
-    });
+    const body = await request.json()
 
-    return NextResponse.json({
-      success: true,
-      deletedId: deletedImage.id,
-    });
-  } catch (error) {
+    // Support both single image and batch upload formats
+    let imagesToCreate: Array<{ imageUrl: string; title?: string; description?: string; altText?: string }>
+
+    if (Array.isArray(body.images)) {
+      // Batch format: { images: [{imageUrl, altText}, ...] }
+      imagesToCreate = body.images
+    } else if (body.imageUrl) {
+      // Single format: { imageUrl, title, description }
+      imagesToCreate = [body]
+    } else {
+      return NextResponse.json(
+        { error: 'Request must contain either imageUrl or images array' },
+        { status: 400 }
+      )
+    }
+
+    // Validate all images
+    if (!Array.isArray(imagesToCreate) || imagesToCreate.length === 0) {
+      return NextResponse.json(
+        { error: 'At least one image is required' },
+        { status: 400 }
+      )
+    }
+
+    for (const image of imagesToCreate) {
+      if (!image.imageUrl || typeof image.imageUrl !== 'string') {
+        return NextResponse.json(
+          { error: 'All images must have a valid imageUrl' },
+          { status: 400 }
+        )
+      }
+    }
+
+    // Get the next sortOrder value
+    const lastImage = await prisma.heroImage.findFirst({
+      orderBy: { sortOrder: 'desc' },
+    })
+    let nextSortOrder = (lastImage?.sortOrder ?? -1) + 1
+
+    // Create all images
+    const createdImages = []
+    for (const image of imagesToCreate) {
+      const newImage = await prisma.heroImage.create({
+        data: {
+          imageUrl: image.imageUrl,
+          title: image.title || image.altText || 'Untitled',
+          description: image.description || '',
+          sortOrder: nextSortOrder,
+          isActive: true,
+        },
+      })
+      createdImages.push(newImage)
+      nextSortOrder++
+    }
+
     return NextResponse.json(
-      { message: "Image not found" },
-      { status: 404 }
-    );
+      {
+        success: true,
+        created: createdImages.length,
+        images: createdImages,
+      },
+      { status: 201 }
+    )
+  } catch (error) {
+    console.error('Error creating hero image(s):', error)
+    return NextResponse.json(
+      { error: 'Failed to create hero image(s)' },
+      { status: 500 }
+    )
   }
 }

@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/context/LanguageProvider";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "@/components/ui/sonner";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -41,7 +42,9 @@ export default function RootLayout({
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
         <LanguageProvider>{children}</LanguageProvider>
+        <Toaster />
       </body>
+      
     </html>
   );
 }

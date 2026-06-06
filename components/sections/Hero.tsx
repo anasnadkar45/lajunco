@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageProvider";
-import { Button } from "../ui/button";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
+import { Button } from "../ui/button";
 
 type HeroSlide = {
   id?: number;
@@ -24,7 +24,7 @@ export default function Hero() {
       title: slide.title,
       subtitle: slide.subtitle,
       description: slide.description,
-      imageUrl: `/images/${slide.image}`,
+      imageUrl: `/services/${slide.image}`,
       altText: slide.subtitle,
     }));
   });
@@ -39,14 +39,19 @@ export default function Hero() {
         const res = await fetch("/api/admin/hero-images");
         const data = await res.json();
 
-        if (data.success && data.images && data.images.length > 0) {
+        // Check if data is an array (direct API response) or has an images property
+        const imagesArray = Array.isArray(data) ? data : data?.images;
+
+        if (imagesArray && imagesArray.length > 0) {
           const defaultArray = defaultSlides as unknown as any[];
 
-          const dbSlides: HeroSlide[] = data.images.map(
+          const dbSlides: HeroSlide[] = imagesArray.map(
             (
               image: {
-                id: number;
+                id?: string | number;
                 imageUrl: string;
+                title?: string;
+                description?: string;
                 altText?: string | null;
               },
               index: number
@@ -55,30 +60,29 @@ export default function Hero() {
                 defaultArray[index % defaultArray.length];
 
               return {
-                id: image.id,
+                id: image.id ? Number(image.id) : index,
                 title: defaultSlideContent?.title || "Hero Title",
                 subtitle: defaultSlideContent?.subtitle || "Hero Subtitle",
                 description:
-                  defaultSlideContent?.description || "Hero Description",
+                  image.description || defaultSlideContent?.description || "Hero Description",
                 imageUrl: image.imageUrl,
                 altText: image.altText || "Hero image",
               };
             }
           );
 
-          const remainingDefaultSlides = defaultArray.slice(
-            dbSlides.length % defaultArray.length
-          );
-
-          const defaultHeroSlides: HeroSlide[] = remainingDefaultSlides.map(
-            (slide) => ({
+          // If we have fewer images than default slides, add remaining defaults
+          const remainingCount = Math.max(0, (defaultArray as any[]).length - dbSlides.length);
+          const defaultHeroSlides: HeroSlide[] = (defaultArray as any[])
+            .slice(dbSlides.length)
+            .slice(0, remainingCount)
+            .map((slide) => ({
               title: slide.title,
               subtitle: slide.subtitle,
               description: slide.description,
               imageUrl: `/images/${slide.image}`,
               altText: slide.subtitle,
-            })
-          );
+            }));
 
           const combinedSlides = [
             ...dbSlides,
@@ -89,6 +93,7 @@ export default function Hero() {
         }
       } catch (error) {
         console.error("Failed to fetch hero images:", error);
+        // Keep using default slides on error
       }
     }
 

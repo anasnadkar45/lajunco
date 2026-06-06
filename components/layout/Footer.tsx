@@ -140,7 +140,7 @@ export default function Footer() {
               {serviceLinks.map((link) => (
                 <motion.li key={link.label} variants={linkItem as any}>
                   <Link
-                    href={link.href}
+                    href={`/services${link.href}`}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
                   >
                     {link.label}

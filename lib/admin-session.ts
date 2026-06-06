@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import crypto from "crypto";
+import { redirect } from "next/navigation";
 
 const COOKIE_NAME = "admin_session";
 
@@ -62,4 +63,6 @@ export async function verifyAdminSession() {
 export async function destroyAdminSession() {
   const cookieStore = await cookies();
   cookieStore.delete(COOKIE_NAME);
+
+  redirect('/admin/login')
 }

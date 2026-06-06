@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 
 import { useLanguage } from "@/context/LanguageProvider";
 import LanguageToggle from "@/components/common/LanguageToggle";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
@@ -61,9 +61,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-12 left-0 right-0 z-50 transform transition-[transform,opacity] duration-500 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-      }`}
+      className={`fixed top-12 left-0 right-0 z-50 transform transition-[transform,opacity] duration-500 ease-out ${visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
       dir={dir}
     >
       <div className="w-full bg-white px-4 py-2 shadow-sm backdrop-blur md:px-8">
@@ -94,8 +93,11 @@ export default function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden items-center gap-3 md:flex">
-            <LanguageToggle />
-            <Button>{t.navbar.requestQuote}</Button>
+            <Link href={'/contact'} className={buttonVariants({
+              className: "flex-1 shimmer"
+            })}>
+              {t.navbar.requestQuote}
+            </Link>
           </div>
 
           {/* Mobile Button */}
@@ -124,11 +126,11 @@ export default function Navbar() {
                 ))}
 
                 <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
-                  <LanguageToggle />
-
-                  <Button className="flex-1">
+                  <Link href={'/contact'} className={buttonVariants({
+                    className: "flex-1 shimmer"
+                  })}>
                     {t.navbar.requestQuote}
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>

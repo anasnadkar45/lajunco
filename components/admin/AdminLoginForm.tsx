@@ -38,7 +38,7 @@ export default function AdminLoginForm() {
       return;
     }
 
-    router.push("/admin");
+    router.push("/admin/hero");
     router.refresh();
   }
 

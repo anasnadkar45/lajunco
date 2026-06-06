@@ -25,42 +25,42 @@ export const translations = {
       secondaryButton: "Explore Services",
       slides: [
         {
-          image: "lajunImage1.jpg",
+          image: "FacilitySecurity.png",
           title: "Facility Security",
           subtitle: "FACILITY SECURITY",
           description:
             "Comprehensive protection for buildings and facilities with disciplined movement control and high-quality security standards.",
         },
         {
-          image: "lajunImage2.png",
+          image: "PrivateSecurity.png",
           title: "Private Security",
           subtitle: "PRIVATE SECURITY",
           description:
             "Dedicated security services for sensitive sites, private facilities, residences, and VIP locations.",
         },
         {
-          image: "lajunImage3.png",
+          image: "AccessControl.png",
           title: "Access Control",
           subtitle: "ACCESS CONTROL",
           description:
             "Integrated entry and exit management for people, visitors, vehicles, and goods using structured security procedures.",
         },
         {
-          image: "lajunImage4.png",
+          image: "EventSecurity.png",
           title: "Event Security",
           subtitle: "EVENT SECURITY",
           description:
             "Crowd control, access management, security screening, emergency response, and on-site support for successful events.",
         },
         {
-          image: "lajunImage5.png",
+          image: "ServeillanceSystems.png",
           title: "Surveillance Systems",
           subtitle: "SURVEILLANCE SYSTEMS",
           description:
             "Advanced CCTV, control rooms, live monitoring, and smart analytics for rapid threat detection.",
         },
         {
-          image: "lajunImage6.png",
+          image: "SecurityPatrol.png",
           title: "Security Patrols",
           subtitle: "SECURITY PATROLS",
           description:
@@ -91,7 +91,7 @@ export const translations = {
         "The company relies on practical expertise and advanced operational knowledge in security and protection, enabling it to provide reliable services that meet client needs across various sectors.",
         "At LAJUN, we build an integrated security model based on discipline, readiness, professional appearance, and full commitment, enhancing client trust and ensuring consistent performance across all sites.",
       ],
-      image: "lajunImage1.jpg",
+      image: "SecurityFacility.png",
     },
 
     visionMission: {
@@ -505,42 +505,42 @@ export const translations = {
       secondaryButton: "استكشف الخدمات",
       slides: [
         {
-          image: "lajunImage1.jpg",
+          image: "FacilitySecurity.png",
           title: "حراسات المنشآت",
           subtitle: "FACILITY SECURITY",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط بأعلى معايير الجودة.",
         },
         {
-          image: "lajunImage2.png",
+          image: "PrivateSecurity.png",
           title: "الحراسات الخاصة",
           subtitle: "PRIVATE SECURITY",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة والمساكن ومرافق كبار الشخصيات.",
         },
         {
-          image: "lajunImage3.png",
+          image: "AccessControl.png",
           title: "تنظيم الدخول والخروج",
           subtitle: "ACCESS CONTROL",
           description:
             "إدارة حركة الأفراد والزوار والمركبات والبضائع داخل المنشآت وفق إجراءات أمنية دقيقة.",
         },
         {
-          image: "lajunImage4.png",
+          image: "EventSecurity.png",
           title: "تأمين الفعاليات",
           subtitle: "EVENT SECURITY",
           description:
             "إدارة الحشود وتنظيم الدخول والفحص الأمني والاستجابة للطوارئ والدعم الميداني لضمان نجاح الفعاليات.",
         },
         {
-          image: "lajunImage5.png",
+          image: "SurveillanceSystems.png",
           title: "المراقبة الأمنية",
           subtitle: "SURVEILLANCE SYSTEMS",
           description:
             "أنظمة مراقبة متقدمة وغرف تحكم مركزية وكاميرات حديثة وتحليلات ذكية للكشف السريع عن التهديدات.",
         },
         {
-          image: "lajunImage6.png",
+          image: "SecurityPatrol.png",
           title: "الدوريات الأمنية",
           subtitle: "SECURITY PATROLS",
           description:
@@ -571,7 +571,7 @@ export const translations = {
         "تستند الشركة إلى خبرات عملية ومعرفة تشغيلية متقدمة في مجال الأمن والحماية، مما يمكنها من تقديم خدمات أمنية موثوقة تلبي احتياجات العملاء في مختلف القطاعات.",
         "نعمل في لجن على بناء نموذج أمني متكامل يقوم على الانضباط والجاهزية والمظهر المهني والالتزام الكامل، بما يعزز ثقة العملاء ويضمن جودة الأداء في جميع المواقع.",
       ],
-      image: "lajunImage1.jpg",
+      image: "SecurityFacility.png",
     },
 
     visionMission: {

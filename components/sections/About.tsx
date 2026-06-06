@@ -159,7 +159,7 @@ const About = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <Image
-              src={`/images/${about.image}`}
+              src={`/${about.image}`}
               alt={about.title}
               width={1200}
               height={900}
