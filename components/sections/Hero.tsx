@@ -194,7 +194,7 @@ export default function Hero() {
             alt={activeSlide.altText || activeSlide.title}
             width={1920}
             height={1080}
-            priority
+            loading="lazy"
             className="h-full w-full object-cover"
           />
         </motion.div>
