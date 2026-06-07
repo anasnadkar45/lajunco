@@ -198,7 +198,8 @@ const Service = () => {
                       src={`/services/${card.image}`}
                       alt={card.title}
                       fill
-                      className="object-cover grayscale-0 group-hover:grayscale transition duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="object-cover grayscale-0 transition duration-500 group-hover:grayscale"
                     />
                   </motion.div>
 

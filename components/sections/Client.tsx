@@ -24,7 +24,7 @@ const Client = () => {
       >
         <div className="flex flex-col items-center gap-3">
           <Image
-            src="/images/LajunImage2.png"
+            src="/logo.png"
             alt={name}
             width={200}
             height={120}

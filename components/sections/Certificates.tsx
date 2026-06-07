@@ -135,12 +135,13 @@ const Certificates = () => {
                 <motion.div
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="h-full w-full"
+                  className="relative h-full w-full"
                 >
                   <Image
                     src={`/certificates/${doc.document}`}
                     alt={doc.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
                     className="object-cover transition duration-300"
                   />
                 </motion.div>
@@ -217,6 +218,7 @@ const Certificates = () => {
                         src={`/certificates/${selectedDocument.document}`}
                         alt={selectedDocument.title}
                         fill
+                        sizes="100vw"
                         className="object-contain"
                       />
                     </motion.div>

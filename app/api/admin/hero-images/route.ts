@@ -64,7 +64,26 @@ export async function POST(request: NextRequest) {
 
     // Create all images
     const createdImages = []
+
+
     for (const image of imagesToCreate) {
+      if (!image.imageUrl || typeof image.imageUrl !== "string") {
+        return NextResponse.json(
+          { error: "All images must have a valid imageUrl" },
+          { status: 400 }
+        );
+      }
+
+      if (image.imageUrl.startsWith("data:image")) {
+        return NextResponse.json(
+          {
+            error:
+              "Base64 images are not allowed. Upload the image first and send only the uploaded image URL.",
+          },
+          { status: 400 }
+        );
+      }
+      
       const newImage = await prisma.heroImage.create({
         data: {
           imageUrl: image.imageUrl,
