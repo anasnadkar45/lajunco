@@ -37,7 +37,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main lang="en" dir="ltr" className="min-h-screen bg-white">
       <div className="flex">
         <aside className="hidden h-screen w-72 border-r bg-primary/10 px-6 py-6 lg:block relative">
           <div className="flex items-center gap-3">
@@ -56,7 +56,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               const Icon = item.icon
               const isActive = pathname.includes(item.href)
 
-              console.log({ pathname, isActive })
               return (
                 <Link
                   key={item.title}

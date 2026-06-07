@@ -21,9 +21,9 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="certificates" >
+      {/* <section id="certificates" >
         <Certificates />
-      </section>
+      </section> */}
 
       <section id="about" >
         <About />

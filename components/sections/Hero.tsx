@@ -215,15 +215,15 @@ export default function Hero() {
           />
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-slate-950/90 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-slate-950/90 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-32 bg-linear-to-r from-slate-950/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-32 bg-linear-to-l from-slate-950/50 to-transparent" />
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9 }}
-        className="absolute inset-0 bg-slate-950/60"
+        className="absolute inset-0 bg-slate-700/20"
       />
 
       <div className="relative z-40 mx-auto flex h-full max-w-6xl items-center px-6 pt-52 sm:px-10">

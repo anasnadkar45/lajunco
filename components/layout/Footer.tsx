@@ -180,7 +180,7 @@ export default function Footer() {
               >
                 <Phone className="mt-1 h-4 w-4 text-primary" />
                 <div>
-                  <p>+053370700</p>
+                  <p>+053370700 / 0114450211 / +966 53 217 5302</p>
                 </div>
               </motion.div>
 

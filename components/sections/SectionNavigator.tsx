@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 const sections = [
   { id: "hero", number: "01", label: "Hero" },
-  { id: "certificates", number: "02", label: "Certificates" },
-  { id: "about", number: "03", label: "About" },
-  { id: "services", number: "04", label: "Services" },
-  { id: "clients", number: "05", label: "Clients" },
-  { id: "contact", number: "06", label: "Contact" },
+  // { id: "certificates", number: "02", label: "Certificates" },
+  { id: "about", number: "02", label: "About" },
+  { id: "services", number: "03", label: "Services" },
+  { id: "clients", number: "04", label: "Clients" },
+  { id: "contact", number: "05", label: "Contact" },
 ];
 
 export default function SectionNavigator() {

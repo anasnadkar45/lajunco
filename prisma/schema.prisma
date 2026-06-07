@@ -22,20 +22,21 @@ model HeroImage {
 }
 
 model ContactMessage {
-  id Int @id @default(autoincrement())
+  id             String   @id @default(cuid())
+  purpose        String
+  fullName       String
+  email          String
+  secondaryEmail String?
+  phone          String?
+  city           String?
+  company        String?
+  guards         String?
+  message        String
 
-  purpose    String
-  fullName   String
-  email      String
-  phone      String?
-  city       String?
-  company    String?
-  guards     String?
-  message    String
+  cvFileName     String?
+  cvFileType     String?
+  cvFileUrl      String?
 
-  cvFileName String?
-  cvFileType String?
-  cvFileUrl  String?
-
-  createdAt DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

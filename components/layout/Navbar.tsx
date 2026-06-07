@@ -8,7 +8,6 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 import { useLanguage } from "@/context/LanguageProvider";
-import LanguageToggle from "@/components/common/LanguageToggle";
 import { Button, buttonVariants } from "../ui/button";
 
 export default function Navbar() {
@@ -22,7 +21,7 @@ export default function Navbar() {
     { label: t.navbar.home, href: "/" },
     { label: t.navbar.about, href: "/about" },
     { label: t.navbar.services, href: "/services" },
-    // { label: t.navbar.clients || "Clients", href: "/clients" },
+    { label: t.navbar.certificates || "Certificates", href: "/certificates" },
     { label: t.navbar.contact, href: "/contact" },
     { label: t.navbar.legal, href: "/legal" },
     { label: t.navbar.operations, href: "/operations" },
@@ -65,21 +64,21 @@ export default function Navbar() {
         }`}
       dir={dir}
     >
-      <div className="w-full bg-white px-4 py-2 shadow-sm backdrop-blur md:px-8">
+      <div className="w-full bg-white px-4 shadow-sm backdrop-blur md:px-8">
         <nav className="relative mx-auto flex max-w-6xl items-center justify-between">
           <Link href="/" onClick={() => setMobileOpen(false)}>
             <Image
               src="/logo.png"
               alt={lang === "en" ? "Lajun Security Logo" : "شعار لجون الأمن"}
-              width={80}
-              height={40}
+              width={100}
+              height={70}
               priority
-              className="h-auto w-20"
+              className="h-auto w-30"
             />
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -92,7 +91,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 lg:flex">
             <Link href={'/contact'} className={buttonVariants({
               className: "flex-1 shimmer"
             })}>
@@ -104,7 +103,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-900 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-900 lg:hidden"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}

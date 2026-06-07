@@ -39,7 +39,6 @@ export default function HeroImagesPage() {
     fetchImages()
   }, [])
 
-  console.log(images)
 
   const handleDelete = async (id: string) => {
     try {

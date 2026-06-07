@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import {
   Briefcase,
   FileText,
@@ -10,20 +10,20 @@ import {
   MapPin,
   Clock,
   MessageSquare,
-} from "lucide-react"
-import { useLanguage } from "@/context/LanguageProvider"
+} from "lucide-react";
+import { useLanguage } from "@/context/LanguageProvider";
 import { UploadButton } from "@/lib/uploadthing";
+import WhatsAppButton from "../common/WhatsAppButton";
 
-type ContactPurpose = "quote" | "job" | "inquiry"
+type ContactPurpose = "quote" | "job" | "inquiry";
 
 type ContactForm = {
   purpose: ContactPurpose;
   fullName: string;
   email: string;
+  secondaryEmail: string;
   phone: string;
   city: string;
-  company: string;
-  guards: string;
   message: string;
   cvFileName: string;
   cvFileType: string;
@@ -31,122 +31,101 @@ type ContactForm = {
 };
 
 export default function ContactSection() {
-  const { t } = useLanguage()
-  const contact = t.contact
+  const { t } = useLanguage();
+  const contact = t.contact;
+
   const [form, setForm] = useState<ContactForm>({
     purpose: "quote",
     fullName: "",
     email: "",
+    secondaryEmail: "",
     phone: "",
     city: "",
-    company: "",
-    guards: "",
     message: "",
     cvFileName: "",
     cvFileType: "",
     cvFileUrl: "",
   });
+
   const [uploadingFile, setUploadingFile] = useState(false);
-  const [submitting, setSubmitting] = useState(false)
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
-  const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFieldChange = (field: keyof ContactForm) =>
+  const handleFieldChange =
+    (field: keyof ContactForm) =>
     (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-      setForm((prev) => ({ ...prev, [field]: event.target.value }))
-      setStatus("idle")
-      setError(null)
-    }
-
-  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-
-    if (!file) {
-      setForm((prev) => ({ ...prev, cvFileName: "", cvFileType: "", cvFileData: "" }))
-      setStatus("idle")
-      setError(null)
-      return
-    }
-
-    const fileData = await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = () => {
-        const result = reader.result
-        if (typeof result === "string") {
-          const commaIndex = result.indexOf(",")
-          resolve(commaIndex >= 0 ? result.slice(commaIndex + 1) : result)
-        } else {
-          reject(new Error("File read failed"))
-        }
-      }
-      reader.onerror = () => reject(reader.error)
-      reader.readAsDataURL(file)
-    })
-
-    setForm((prev) => ({
-      ...prev,
-      cvFileName: file.name,
-      cvFileType: file.type,
-      cvFileData: fileData,
-    }))
-    setStatus("idle")
-    setError(null)
-  }
+      setForm((prev) => ({ ...prev, [field]: event.target.value }));
+      setStatus("idle");
+      setError(null);
+    };
 
   const handlePurposeChange = (purpose: ContactPurpose) => {
-    setForm((prev) => ({ ...prev, purpose }))
-    setStatus("idle")
-    setError(null)
-  }
+    setForm((prev) => ({
+      ...prev,
+      purpose,
+      cvFileName: purpose === "job" ? prev.cvFileName : "",
+      cvFileType: purpose === "job" ? prev.cvFileType : "",
+      cvFileUrl: purpose === "job" ? prev.cvFileUrl : "",
+    }));
+    setStatus("idle");
+    setError(null);
+  };
+
+  const resetForm = () => {
+    setForm((prev) => ({
+      purpose: prev.purpose,
+      fullName: "",
+      email: "",
+      secondaryEmail: "",
+      phone: "",
+      city: "",
+      message: "",
+      cvFileName: "",
+      cvFileType: "",
+      cvFileUrl: "",
+    }));
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setSubmitting(true)
-    setStatus("idle")
-    setError(null)
+    event.preventDefault();
+
+    setSubmitting(true);
+    setStatus("idle");
+    setError(null);
 
     if (!form.fullName.trim() || !form.email.trim() || !form.message.trim()) {
-      setError(contact.form.validationRequired)
-      setStatus("error")
-      setSubmitting(false)
-      return
+      setError(contact.form.validationRequired);
+      setStatus("error");
+      setSubmitting(false);
+      return;
     }
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
-      })
+      });
 
       if (!response.ok) {
-        const body = await response.json().catch(() => null)
-        setError(body?.message ?? contact.form.submitError)
-        setStatus("error")
+        const body = await response.json().catch(() => null);
+        setError(body?.message ?? contact.form.submitError);
+        setStatus("error");
       } else {
-        setStatus("success")
-        setForm({
-          purpose: form.purpose,
-          fullName: "",
-          email: "",
-          phone: "",
-          city: "",
-          company: "",
-          guards: "",
-          message: "",
-          cvFileName: "",
-          cvFileType: "",
-          cvFileUrl: "",
-        });
+        setStatus("success");
+        resetForm();
       }
     } catch (error) {
-      console.error(error)
-      setError(contact.form.submitError)
-      setStatus("error")
+      console.error(error);
+      setError(contact.form.submitError);
+      setStatus("error");
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
@@ -154,41 +133,57 @@ export default function ContactSection() {
         <div className="grid gap-0 md:grid-cols-[1.4fr_1fr]">
           <div className="p-4 lg:p-8">
             <div className="max-w-2xl">
-              <p className="text-xl md:text-4xl font-bold tracking-tight text-secondary">{contact.badge}</p>
+              <p className="text-xl font-bold tracking-tight text-secondary md:text-4xl">
+                {contact.badge}
+              </p>
               <div className="mt-3 h-1 w-16 rounded-full bg-primary" />
-              <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600">{contact.subtitle}</p>
+              <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600">
+                {contact.subtitle}
+              </p>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               {contact.purposes.map((item) => {
-                const Icon = item.id === "quote" ? Briefcase : item.id === "job" ? FileText : MessageCircle
-                const active = form.purpose === item.id
+                const Icon =
+                  item.id === "quote"
+                    ? Briefcase
+                    : item.id === "job"
+                      ? FileText
+                      : MessageCircle;
+
+                const active = form.purpose === item.id;
 
                 return (
                   <button
                     key={item.id}
                     type="button"
                     onClick={() => handlePurposeChange(item.id)}
-                    className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border px-4 py-5 text-center transition-all duration-200 ${active
-                      ? "border-primary/80 bg-primary/10 text-slate-950 shadow-sm"
-                      : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
-                      }`}
+                    className={`group flex flex-col items-center justify-center gap-3 rounded-2xl border px-4 py-5 text-center transition-all duration-200 ${
+                      active
+                        ? "border-primary/80 bg-primary/10 text-slate-950 shadow-sm"
+                        : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
+                    }`}
                   >
                     <span
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl ${active ? "bg-primary text-slate-950" : "bg-slate-100 text-slate-600"
-                        }`}
+                      className={`flex h-11 w-11 items-center justify-center rounded-2xl ${
+                        active
+                          ? "bg-primary text-slate-950"
+                          : "bg-slate-100 text-slate-600"
+                      }`}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="text-sm font-semibold">{item.label}</span>
                   </button>
-                )
+                );
               })}
             </div>
 
             <form onSubmit={handleSubmit} className="mt-8 grid gap-4 sm:grid-cols-2">
               <label className="space-y-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.fullName}</span>
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.fullName}
+                </span>
                 <input
                   name="fullName"
                   value={form.fullName}
@@ -200,7 +195,9 @@ export default function ContactSection() {
               </label>
 
               <label className="space-y-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.email}</span>
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.email}
+                </span>
                 <input
                   name="email"
                   value={form.email}
@@ -212,7 +209,26 @@ export default function ContactSection() {
               </label>
 
               <label className="space-y-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.phone}</span>
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.secondaryEmail}{" "}
+                  <span className="text-slate-400">
+                    {contact.form.optionalLabel}
+                  </span>
+                </span>
+                <input
+                  name="secondaryEmail"
+                  value={form.secondaryEmail}
+                  onChange={handleFieldChange("secondaryEmail")}
+                  type="email"
+                  placeholder={contact.form.secondaryEmailPlaceholder}
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
+                />
+              </label>
+
+              <label className="space-y-2">
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.phone}
+                </span>
                 <input
                   name="phone"
                   value={form.phone}
@@ -223,38 +239,16 @@ export default function ContactSection() {
                 />
               </label>
 
-              <label className="space-y-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.city}</span>
+              <label className="space-y-2 sm:col-span-2">
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.city}
+                </span>
                 <input
                   name="city"
                   value={form.city}
                   onChange={handleFieldChange("city")}
                   type="text"
                   placeholder={contact.form.cityPlaceholder}
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
-                />
-              </label>
-
-              <label className="space-y-2 sm:col-span-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.company}</span>
-                <input
-                  name="company"
-                  value={form.company}
-                  onChange={handleFieldChange("company")}
-                  type="text"
-                  placeholder={contact.form.companyPlaceholder}
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
-                />
-              </label>
-
-              <label className="space-y-2 sm:col-span-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.guards}</span>
-                <input
-                  name="guards"
-                  value={form.guards}
-                  onChange={handleFieldChange("guards")}
-                  type="text"
-                  placeholder={contact.form.guardsPlaceholder}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
                 />
               </label>
@@ -266,7 +260,7 @@ export default function ContactSection() {
                       {contact.form.attachCV}
                     </p>
                     <p className="mt-1 text-xs text-slate-500">
-                      Upload your CV in PDF, DOC, or DOCX format.
+                      {contact.form.attachCVHint}
                     </p>
                   </div>
 
@@ -298,7 +292,7 @@ export default function ContactSection() {
                       console.error(error);
                       setUploadingFile(false);
                       setStatus("error");
-                      setError("File upload failed. Please try again.");
+                      setError(contact.form.fileUploadError);
                     }}
                     appearance={{
                       button:
@@ -308,7 +302,9 @@ export default function ContactSection() {
                   />
 
                   {uploadingFile ? (
-                    <p className="text-xs text-slate-500">Uploading file...</p>
+                    <p className="text-xs text-slate-500">
+                      {contact.form.uploadingFile}
+                    </p>
                   ) : null}
 
                   {form.cvFileName ? (
@@ -317,7 +313,9 @@ export default function ContactSection() {
                         <p className="text-sm font-medium text-emerald-800">
                           {form.cvFileName}
                         </p>
-                        <p className="text-xs text-emerald-600">File uploaded successfully</p>
+                        <p className="text-xs text-emerald-600">
+                          {contact.form.fileUploaded}
+                        </p>
                       </div>
 
                       <button
@@ -332,7 +330,7 @@ export default function ContactSection() {
                         }
                         className="text-xs font-semibold text-red-600 hover:text-red-700"
                       >
-                        Remove
+                        {contact.form.removeFile}
                       </button>
                     </div>
                   ) : null}
@@ -340,7 +338,9 @@ export default function ContactSection() {
               ) : null}
 
               <label className="space-y-2 sm:col-span-2">
-                <span className="text-sm font-medium text-slate-700">{contact.form.message}</span>
+                <span className="text-sm font-medium text-slate-700">
+                  {contact.form.message}
+                </span>
                 <textarea
                   name="message"
                   value={form.message}
@@ -352,74 +352,88 @@ export default function ContactSection() {
               </label>
 
               {status === "error" && error ? (
-                <p className="sm:col-span-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>
+                <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 sm:col-span-2">
+                  {error}
+                </p>
               ) : null}
+
               {status === "success" ? (
-                <p className="sm:col-span-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{contact.form.submitSuccess}</p>
+                <p className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 sm:col-span-2">
+                  {contact.form.submitSuccess}
+                </p>
               ) : null}
 
               <button
                 type="submit"
                 disabled={submitting || uploadingFile}
-                className="sm:col-span-2 rounded-2xl bg-primary px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-2xl bg-primary px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
               >
                 {submitting
                   ? contact.form.submitting
                   : uploadingFile
-                    ? "Uploading file..."
+                    ? contact.form.uploadingFile
                     : contact.form.submit}
               </button>
             </form>
           </div>
 
-          <div className="bg-secondary p-4 lg:p-8 text-slate-100 md:p-12">
+          <div className="bg-secondary p-4 text-slate-100 md:p-12 lg:p-8">
             <div className="max-w-md">
-              <p className="text-lg font-semibold text-white">{contact.contactInfo.title}</p>
+              <p className="text-lg font-semibold text-white">
+                {contact.contactInfo.title}
+              </p>
+
               <div className="mt-8 space-y-5 text-sm text-slate-300">
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                   <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <Phone className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{contact.contactInfo.phone}</p>
+                    <p className="font-semibold text-white">
+                      {contact.contactInfo.phone} / 0114450211 / +966 53 217 5302
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                   <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <Mail className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{contact.contactInfo.email}</p>
+                    <p className="font-semibold text-white">
+                      {contact.contactInfo.email}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                   <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <MapPin className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{contact.contactInfo.location}</p>
+                    <p className="font-semibold text-white">
+                      {contact.contactInfo.location}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                   <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <Clock className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{contact.contactInfo.hours}</p>
+                    <p className="font-semibold text-white">
+                      {contact.contactInfo.hours}
+                    </p>
                   </div>
                 </div>
 
-                <div className="mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-slate-700 text-slate-100 transition hover:border-primary hover:text-primary">
-                  <MessageSquare className="h-5 w-5" />
-                </div>
+                <WhatsAppButton />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
