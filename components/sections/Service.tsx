@@ -224,20 +224,22 @@ const Service = () => {
                   <p className="text-sm text-muted-foreground">{card.description}</p>
                 </motion.div>
 
-                <motion.span
-                  initial={{ scale: 0, rotate: -120 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.55,
-                    delay: 0.25 + index * 0.08,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{ scale: 1.15, rotate: 8 }}
-                  className="shimmer absolute -bottom-6 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
-                >
-                  {index + 1}
-                </motion.span>
+                <div className="absolute inset-x-0 -bottom-6 z-10 flex justify-center">
+                  <motion.span
+                    initial={{ scale: 0, rotate: -120 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.55,
+                      delay: 0.25 + index * 0.08,
+                      ease: "easeOut",
+                    }}
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    className="shimmer flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+                  >
+                    {index + 1}
+                  </motion.span>
+                </div>
               </Link>
             </motion.div>
           ))}

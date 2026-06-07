@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="ar"
-      dir="ltr"
+      dir="rtl"
       suppressHydrationWarning
       className={`${cairo.variable} h-full antialiased`}
     >
