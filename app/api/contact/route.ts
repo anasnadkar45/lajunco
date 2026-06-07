@@ -62,7 +62,7 @@ export async function POST(req: Request) {
         purpose: cleanPurpose,
         fullName: cleanFullName,
         email: cleanEmail,
-        secondaryEmail: cleanSecondaryEmail,
+        secondaryEmail: cleanSecondaryEmail || "",
         phone: cleanPhone,
         city: cleanCity,
         company: null,

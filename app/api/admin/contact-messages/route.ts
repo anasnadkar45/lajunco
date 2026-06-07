@@ -72,7 +72,7 @@ export async function DELETE(req: Request) {
   }
 
   const body = await req.json();
-  const id = body?.id;
+  const id = body?.id as string;
 
   if (typeof id !== "number") {
     return NextResponse.json(
