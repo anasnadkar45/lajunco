@@ -5,22 +5,42 @@ import { motion } from "motion/react";
 
 const LajunBanner = () => {
   return (
-    <section className="w-full pt-28 xl:pt-0 overflow-hidden bg-primary/30">
+    <section className="relative h-[75vh] min-h-[560px] w-full overflow-hidden border-b-8 border-primary sm:h-[85vh] lg:h-screen">
       <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ scale: 1.06 }}
+        animate={{  scale: 1 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/Banner.jpeg"
+          alt="Lajun Security Services Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center sm:object-center lg:object-center"
+        />
+      </motion.div>
+
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-transparent to-slate-950/70" />
+      <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-slate-950/80 to-transparent sm:w-28" />
+      <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-950/80 to-transparent sm:w-28" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.92 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+        className="absolute left-1/2 bottom-12 z-20 -translate-x-1/2"
       >
         <Image
           src="/logo.png"
-          alt="Lajun Security Services"
-          width={1920}
-          height={900}
-          priority
-          className="h-auto w-full object-cover"
+          alt="Lajun logo"
+          width={230}
+          height={230}
+          className="h-auto w-[200px] drop-shadow-2xl xl:w-[300px]"
         />
       </motion.div>
+
     </section>
   );
 };
