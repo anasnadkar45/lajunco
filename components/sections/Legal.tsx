@@ -73,7 +73,7 @@ export default function LegalInformation() {
                   </div>
 
                   <div className="flex-1 text-center">
-                    <h3 className="text-lg font-bold text-primary">
+                    <h3 dir="ltr" className="text-lg font-bold text-primary">
                       {item.label}
                     </h3>
 
