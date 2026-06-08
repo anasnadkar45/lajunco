@@ -44,7 +44,7 @@ export default function Topbar() {
                         </a>
 
                         <a
-                            href="tel:+996053370700"
+                            href="tel:+99653370700"
                             aria-label="Call Lajun"
                             className="flex items-center gap-2 hover:text-primary transition-all duration-300 ease-in"
                         >

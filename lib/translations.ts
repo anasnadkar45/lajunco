@@ -391,8 +391,8 @@ export const translations = {
       },
       contactInfo: {
         title: "Contact Information",
-        phone: "0533070700",
-        landline: "0114450211",
+        phone: "+966533070700",
+        landline: "+966114450211",
         quoteEmail: "quotes@lajunco.com",
         email: "info@lajunco.com",
         website: "www.lajunco.com",
@@ -716,7 +716,7 @@ export const translations = {
         {
           key: "phone",
           label: "الهاتف",
-          value: "053 307 0700",
+          value: "+966533070700",
         },
       ],
       website: {
@@ -942,8 +942,8 @@ export const translations = {
       },
       contactInfo: {
         title: "بيانات التواصل",
-        phone: "0533070700",
-        landline: "0114450211",
+        phone: "+966533070700",
+        landline: "+966114450211",
         quoteEmail: "quotes@lajunco.com",
         email: "info@lajunco.com",
         website: "www.lajunco.com",

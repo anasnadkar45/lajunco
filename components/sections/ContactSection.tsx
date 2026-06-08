@@ -390,7 +390,7 @@ export default function ContactSection() {
                   </span>
                   <div>
                     <p dir="ltr" className="font-semibold text-white">
-                      {contact.contactInfo.phone} / 0114450211 / +966 53 217 5302
+                      {contact.contactInfo.phone} / +966114450211 / +966532175302
                     </p>
                   </div>
                 </div>
