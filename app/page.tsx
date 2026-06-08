@@ -9,6 +9,7 @@ import Client from "@/components/sections/Client";
 import Footer from "@/components/layout/Footer";
 import ContactSection from "@/components/sections/ContactSection";
 import SectionNavigator from "@/components/sections/SectionNavigator";
+import LajunBanner from "@/components/sections/LajunBanner";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Navbar />
 
       <SectionNavigator />
+      <LajunBanner />
 
       <section id="hero" className="min-h-screen">
         <Hero />

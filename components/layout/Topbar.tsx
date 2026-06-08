@@ -44,12 +44,12 @@ export default function Topbar() {
                         </a>
 
                         <a
-                            href="tel:+053370700"
+                            href="tel:+996053370700"
                             aria-label="Call Lajun"
                             className="flex items-center gap-2 hover:text-primary transition-all duration-300 ease-in"
                         >
                             <Phone className="h-4 w-4 text-primary" />
-                            <span>+053370700</span>
+                            <span dir="ltr">+996053370700</span>
                         </a>
                     </div>
 

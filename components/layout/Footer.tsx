@@ -102,7 +102,7 @@ export default function Footer() {
 
             <p className="max-w-sm text-sm leading-7 text-slate-400">
               Providing comprehensive security guard services with the highest
-              professional standards across the Kingdom.
+              professional standards across the Kingdom
             </p>
           </motion.div>
 
@@ -180,7 +180,7 @@ export default function Footer() {
               >
                 <Phone className="mt-1 h-4 w-4 text-primary" />
                 <div dir="ltr">
-                  <p>+053370700 / 0114450211 / <br /> +966 53 217 5302</p>
+                  <p>+966053370700 / 0114450211 / <br /> +966 53 217 5302</p>
                 </div>
               </motion.div>
 
@@ -221,7 +221,7 @@ export default function Footer() {
           transition={{ duration: 0.65, delay: 0.35, ease: "easeOut" }}
           className="mt-10 border-t border-slate-800 pt-6 text-sm text-slate-500"
         >
-          <p>
+          <p dir="ltr">
             © {new Date().getFullYear()} Lajun Security Services. All rights
             reserved.
           </p>
