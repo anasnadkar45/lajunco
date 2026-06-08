@@ -75,7 +75,7 @@ export async function POST(req: Request) {
     });
 
     const receiverEmail =
-      process.env.CONTACT_RECEIVER_EMAIL || "anasnadkar23@gmail.com";
+      process.env.CONTACT_RECEIVER_EMAIL || "quotes@lajunco.com";
 
     const purposeLabel = getPurposeLabel(cleanPurpose);
     const badgeColor = getPurposeBadgeColor(cleanPurpose);
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
       await resend.emails.send({
         from:
           process.env.CONTACT_FROM_EMAIL ||
-          "Lajun Website <onboarding@resend.dev>",
+          "Lajun Website <info@lajunco.com>",
         to: receiverEmail,
         subject,
         html: `
@@ -199,9 +199,8 @@ export async function POST(req: Request) {
                         </td>
                       </tr>
 
-                      ${
-                        cvFileUrl
-                          ? `
+                      ${cvFileUrl
+            ? `
                             <tr>
                               <td style="padding: 22px 32px 8px;">
                                 <h2 style="margin: 0 0 14px; color: #0f172a; font-size: 18px;">
@@ -224,8 +223,8 @@ export async function POST(req: Request) {
                               </td>
                             </tr>
                           `
-                          : ""
-                      }
+            : ""
+          }
 
                       <tr>
                         <td style="padding: 28px 32px 32px;">
@@ -249,10 +248,13 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, id: result.id });
   } catch (error) {
-    console.error("Contact form submission failed", error);
+    console.error("Resend email error:", error);
 
     return NextResponse.json(
-      { message: "Failed to submit contact form." },
+      {
+        message: "Email sending failed.",
+        error,
+      },
       { status: 500 }
     );
   }
