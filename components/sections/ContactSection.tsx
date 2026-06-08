@@ -389,7 +389,7 @@ export default function ContactSection() {
                     <Phone className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-white">
+                    <p dir="ltr" className="font-semibold text-white">
                       {contact.contactInfo.phone} / 0114450211 / +966 53 217 5302
                     </p>
                   </div>

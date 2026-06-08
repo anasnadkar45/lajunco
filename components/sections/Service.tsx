@@ -185,7 +185,7 @@ const Service = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Link
-                className="group relative block rounded-3xl border border-white/10 bg-white p-1.5 shadow-lg shadow-slate-950/20 transition hover:shadow-2xl"
+                className="group relative block rounded-3xl border border-white/10 bg-white p-1.5 pb-8 shadow-lg shadow-slate-950/20 transition hover:shadow-2xl"
                 href={`/services${card.link}`}
               >
                 <div className="relative h-64 overflow-hidden rounded-2xl">

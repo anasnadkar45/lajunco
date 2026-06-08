@@ -1,7 +1,8 @@
+"use client";
+
 import Navbar from "@/components/layout/Navbar";
 import Topbar from "@/components/layout/Topbar";
 import About from "@/components/sections/About";
-import Certificates from "@/components/sections/Certificates";
 import Hero from "@/components/sections/Hero";
 import Service from "@/components/sections/Service";
 import Client from "@/components/sections/Client";
@@ -11,7 +12,9 @@ import SectionNavigator from "@/components/sections/SectionNavigator";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div
+      className="min-h-screen"
+    >
       <Topbar />
       <Navbar />
 
@@ -21,11 +24,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      {/* <section id="certificates" >
-        <Certificates />
-      </section> */}
-
-      <section id="about" >
+      <section id="about">
         <About />
       </section>
 

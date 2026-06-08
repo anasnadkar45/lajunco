@@ -9,6 +9,7 @@ export default function WhatsAppButton() {
       href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
       target="_blank"
       rel="noopener noreferrer"
+      dir="ltr"
       className="inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-green-600"
     >
       <MessageCircle className="h-5 w-5" />
