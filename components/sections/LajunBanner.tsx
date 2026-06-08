@@ -26,20 +26,6 @@ const LajunBanner = () => {
       <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-slate-950/80 to-transparent sm:w-28" />
       <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-950/80 to-transparent sm:w-28" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.92 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-        className="absolute left-1/2 bottom-12 z-20 -translate-x-1/2"
-      >
-        <Image
-          src="/logo.png"
-          alt="Lajun logo"
-          width={230}
-          height={230}
-          className="h-auto w-[200px] drop-shadow-2xl xl:w-[300px]"
-        />
-      </motion.div>
 
     </section>
   );
