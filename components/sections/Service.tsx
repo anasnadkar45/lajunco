@@ -110,7 +110,7 @@ const Service = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center"
+          className="grid gap-4 grid-cols-2 sm:grid-cols-4 text-center"
         >
           {service.stats.map((stat, index) => (
             <motion.div
@@ -215,7 +215,7 @@ const Service = () => {
                     delay: 0.2 + index * 0.08,
                     ease: "easeOut",
                   }}
-                  className="flex flex-col gap-2 px-4  text-center"
+                  className="flex flex-col gap-2 px-4 mt-2 text-center"
                 >
                   <h3 className="text-lg font-bold text-secondary">
                     {card.title}

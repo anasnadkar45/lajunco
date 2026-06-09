@@ -65,24 +65,14 @@ export default function Footer() {
   return (
     <footer className="overflow-hidden bg-secondary text-slate-100">
       <div className="mx-auto max-w-6xl px-4 py-16">
-        <motion.div
-          variants={footerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="grid gap-10 md:grid-cols-4"
+        <div
+          className="grid gap-10 grid-cols-2 md:grid-cols-4"
         >
-          <motion.div variants={footerColumn as any} className="space-y-5">
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.25 }}
+          <div className="space-y-5">
+            <div
               className="flex items-center gap-3"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.75, rotate: -10 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.65, ease: "easeOut" }}
+              <div
               >
                 <Image
                   src="/logo.png"
@@ -90,7 +80,7 @@ export default function Footer() {
                   width={48}
                   height={48}
                 />
-              </motion.div>
+              </div>
 
               <div>
                 <p className="text-lg font-semibold text-white">
@@ -98,62 +88,56 @@ export default function Footer() {
                 </p>
                 <p className="text-sm text-slate-400">Security Services</p>
               </div>
-            </motion.div>
+            </div>
 
             <p className="max-w-sm text-sm leading-7 text-slate-400">
               Providing comprehensive security guard services with the highest
               professional standards across the Kingdom
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={footerColumn as any}>
+          <div >
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Quick Links
             </p>
 
-            <motion.ul
-              variants={footerContainer}
+            <ul
               className="space-y-3 text-sm text-slate-300"
             >
               {navLinks.map((link) => (
-                <motion.li key={link.href} variants={linkItem as any}>
+                <li key={link.href} >
                   <Link
                     href={link.href}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
                   >
                     {link.label}
                   </Link>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </ul>
+          </div>
 
-          <motion.div variants={footerColumn as any}>
+          <div>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Services
             </p>
 
-            <motion.ul
-              variants={footerContainer}
+            <ul
               className="space-y-3 text-sm text-slate-300"
             >
               {serviceLinks.map((link) => (
-                <motion.li key={link.label} variants={linkItem as any}>
+                <li key={link.label} >
                   <Link
                     href={`/services${link.href}`}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
                   >
                     {link.label}
                   </Link>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
+            </ul>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.45 }}
+            <div
             >
               <Link
                 href="/services"
@@ -161,32 +145,29 @@ export default function Footer() {
               >
                 {t.service.cta}
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div variants={footerColumn as any}>
+          <div >
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Contact Us
             </p>
 
-            <motion.div
-              variants={footerContainer}
+            <div
               className="space-y-4 text-sm text-slate-300"
             >
-              <motion.div
-                variants={linkItem as any}
-                whileHover={{ x: 4 }}
+              <div
+
                 className="flex items-start gap-3"
               >
                 <Phone className="mt-1 h-4 w-4 text-primary" />
                 <div dir="ltr">
                   <p>+96653370700 / +966114450211 / <br /> +966532175302</p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={linkItem as any}
-                whileHover={{ x: 4 }}
+              <div
+
                 className="flex items-start gap-3"
               >
                 <Mail className="mt-1 h-4 w-4 text-primary" />
@@ -198,34 +179,28 @@ export default function Footer() {
                     info@lajunco.com
                   </Link>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={linkItem as any}
-                whileHover={{ x: 4 }}
+              <div
                 className="flex items-start gap-3"
               >
                 <MapPin className="mt-1 h-4 w-4 text-primary" />
                 <div>
                   <p>Riyadh, KSA</p>
                 </div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, delay: 0.35, ease: "easeOut" }}
+        <div
           className="mt-10 border-t border-slate-800 pt-6 text-sm text-slate-500"
         >
           <p dir="ltr">
             © {new Date().getFullYear()} Lajun Security Services. All rights
             reserved.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

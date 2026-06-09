@@ -31,9 +31,9 @@ export default function Topbar() {
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transform transition-[transform,opacity] duration-500 ease-out ${visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
-            <div className="w-full bg-secondary/95 px-8 py-2 backdrop-blur">
-                <nav className="flex items-center justify-between max-w-6xl mx-auto">
-                    <div className="flex flex-wrap items-center gap-4 text-white text-xs">
+            <div className="w-full bg-secondary/95 px-4 py-2 backdrop-blur">
+                <nav className="flex items-center justify-between max-w-6xl mx-auto text-sm sm:text-base">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-white text-xs">
                         <a
                             href="mailto:info@lajunco.com"
                             aria-label="Send email to Lajun"

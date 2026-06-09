@@ -22,9 +22,9 @@ const LajunBanner = () => {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-transparent to-slate-950/70" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-transparent to-slate-950/70" />
       <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-slate-950/80 to-transparent sm:w-28" />
-      <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-950/80 to-transparent sm:w-28" />
+      <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-950/80 to-transparent sm:w-28" /> */}
 
 
     </section>

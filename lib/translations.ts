@@ -465,7 +465,7 @@ export const translations = {
         {
           key: "phone",
           label: "Phone",
-          value: "053 307 0700",
+          value: "+966533070700",
         },
       ],
       website: {
