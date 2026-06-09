@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
-import { motion } from "motion/react";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -21,66 +21,37 @@ export default function Footer() {
     href: card.link || "/services",
   }));
 
-  const footerContainer = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.16,
-      },
+  const socialLinks = [
+    {
+      name: "Instagram",
+      href: "https://instagram.com/",
+      icon: FaInstagram,
     },
-  };
-
-  const footerColumn = {
-    hidden: {
-      opacity: 0,
-      y: 35,
-      filter: "blur(8px)",
+    {
+      name: "Facebook",
+      href: "https://facebook.com/",
+      icon: FaFacebookF,
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
+    {
+      name: "TikTok",
+      href: "https://tiktok.com/",
+      icon: FaTiktok,
     },
-  };
-
-  const linkItem = {
-    hidden: {
-      opacity: 0,
-      x: -12,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.45,
-        ease: "easeOut",
-      },
-    },
-  };
+  ];
 
   return (
     <footer className="overflow-hidden bg-secondary text-slate-100">
       <div className="mx-auto max-w-6xl px-4 py-16">
-        <div
-          className="grid gap-10 grid-cols-2 md:grid-cols-4"
-        >
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           <div className="space-y-5">
-            <div
-              className="flex items-center gap-3"
-            >
-              <div
-              >
-                <Image
-                  src="/logo.png"
-                  alt="Lajun Security"
-                  width={48}
-                  height={48}
-                />
-              </div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Lajun Security"
+                width={48}
+                height={48}
+                className="h-auto w-auto"
+              />
 
               <div>
                 <p className="text-lg font-semibold text-white">
@@ -94,18 +65,35 @@ export default function Footer() {
               Providing comprehensive security guard services with the highest
               professional standards across the Kingdom
             </p>
+
+            <div className="flex items-center gap-3 pt-2">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <Link
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 transition hover:border-primary hover:bg-primary hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
-          <div >
+          <div>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Quick Links
             </p>
 
-            <ul
-              className="space-y-3 text-sm text-slate-300"
-            >
+            <ul className="space-y-3 text-sm text-slate-300">
               {navLinks.map((link) => (
-                <li key={link.href} >
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
@@ -122,11 +110,9 @@ export default function Footer() {
               Services
             </p>
 
-            <ul
-              className="space-y-3 text-sm text-slate-300"
-            >
+            <ul className="space-y-3 text-sm text-slate-300">
               {serviceLinks.map((link) => (
-                <li key={link.label} >
+                <li key={link.label}>
                   <Link
                     href={`/services${link.href}`}
                     className="inline-block transition hover:translate-x-1 hover:text-white"
@@ -137,39 +123,30 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div
+            <Link
+              href="/services"
+              className="mt-4 inline-block text-sm font-semibold text-primary transition hover:text-white"
             >
-              <Link
-                href="/services"
-                className="mt-4 inline-block text-sm font-semibold text-primary transition hover:text-white"
-              >
-                {t.service.cta}
-              </Link>
-            </div>
+              {t.service.cta}
+            </Link>
           </div>
 
-          <div >
+          <div>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Contact Us
             </p>
 
-            <div
-              className="space-y-4 text-sm text-slate-300"
-            >
-              <div
-
-                className="flex items-start gap-3"
-              >
+            <div className="space-y-4 text-sm text-slate-300">
+              <div className="flex items-start gap-3">
                 <Phone className="mt-1 h-4 w-4 text-primary" />
                 <div dir="ltr">
-                  <p>+96653370700 / +966114450211 / <br /> +966532175302</p>
+                  <p>
+                    +96653370700 / +966114450211 / <br /> +966532175302
+                  </p>
                 </div>
               </div>
 
-              <div
-
-                className="flex items-start gap-3"
-              >
+              <div className="flex items-start gap-3">
                 <Mail className="mt-1 h-4 w-4 text-primary" />
                 <div>
                   <Link
@@ -181,9 +158,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div
-                className="flex items-start gap-3"
-              >
+              <div className="flex items-start gap-3">
                 <MapPin className="mt-1 h-4 w-4 text-primary" />
                 <div>
                   <p>Riyadh, KSA</p>
@@ -193,13 +168,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div
-          className="mt-10 border-t border-slate-800 pt-6 text-sm text-slate-500"
-        >
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-6 text-sm text-slate-500 sm:flex-row">
           <p dir="ltr">
             © {new Date().getFullYear()} Lajun Security Services. All rights
             reserved.
           </p>
+
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <Link
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="text-slate-500 transition hover:text-primary"
+                >
+                  <Icon className="h-4 w-4" />
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </footer>

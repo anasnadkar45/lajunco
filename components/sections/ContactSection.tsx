@@ -269,8 +269,8 @@ export default function ContactSection() {
                 </label>
               </AnimatedField>
 
-              <AnimatedField delay={0.04}>
-                <label className="flex flex-col gap-2">
+              <AnimatedField delay={0.04} >
+                <label className="flex flex-col gap-2" >
                   <span className="text-sm font-medium text-slate-700">
                     {contact.form.email}
                   </span>
@@ -327,6 +327,7 @@ export default function ContactSection() {
                   </span>
                   <input
                     name="city"
+                    ref={submitButtonRef as any}
                     value={form.city}
                     onChange={handleFieldChange("city")}
                     type="text"
@@ -482,7 +483,7 @@ export default function ContactSection() {
               </AnimatePresence>
 
               <motion.button
-                ref={submitButtonRef}
+                
                 type="submit"
                 id="submit"
                 disabled={submitting || uploadingFile}

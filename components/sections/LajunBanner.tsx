@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const LajunBanner = () => {
   return (
-    <section className="relative h-[75vh] min-h-[560px] w-full overflow-hidden border-b-8 border-primary sm:h-[85vh] lg:h-screen">
+    <section className="relative h-[75vh] min-h-[560px] mt-[120px] sm:mt-0 w-full overflow-hidden border-b-8 border-primary sm:h-[85vh] lg:h-screen">
       <motion.div
         initial={{ scale: 1.06 }}
         animate={{  scale: 1 }}
