@@ -40,21 +40,21 @@ export const translations = {
             "Comprehensive protection for buildings and facilities with disciplined movement control and high-quality security standards.",
         },
         {
-          image: "PrivateSecurity.png",
+          image: "PrivateSecurity2.png",
           title: "Private Security",
           subtitle: "PRIVATE SECURITY",
           description:
             "Dedicated security services for sensitive sites, private facilities, residences, and VIP locations.",
         },
         {
-          image: "AccessControl.png",
+          image: "AccessControl1.png",
           title: "Access Control",
           subtitle: "ACCESS CONTROL",
           description:
             "Integrated entry and exit management for people, visitors, vehicles, and goods using structured security procedures.",
         },
         {
-          image: "EventSecurity.png",
+          image: "EventSecurity1.png",
           title: "Event Security",
           subtitle: "EVENT SECURITY",
           description:
@@ -68,7 +68,7 @@ export const translations = {
             "Advanced CCTV, control rooms, live monitoring, and smart analytics for rapid threat detection.",
         },
         {
-          image: "SecurityPatrol.png",
+          image: "SecurityPatrol1.png",
           title: "Security Patrols",
           subtitle: "SECURITY PATROLS",
           description:
@@ -150,7 +150,7 @@ export const translations = {
           title: "Access Control",
           description:
             "Gate management, visitor verification, vehicle access control, and goods screening.",
-          image: "AccessControl.png",
+          image: "AccessControl1.png",
           link: "/access-control",
         },
         {
@@ -178,7 +178,7 @@ export const translations = {
           title: "Private Security",
           description:
             "Customized security services for sensitive locations and private facilities.",
-          image: "PrivateSecurity.png",
+          image: "PrivateSecurity2.png",
           link: "/private-security",
         },
       ],
@@ -538,21 +538,21 @@ export const translations = {
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط بأعلى معايير الجودة.",
         },
         {
-          image: "PrivateSecurity.png",
+          image: "PrivateSecurity2.png",
           title: "الحراسات الخاصة",
           subtitle: "PRIVATE SECURITY",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة والمساكن ومرافق كبار الشخصيات.",
         },
         {
-          image: "AccessControl.png",
+          image: "AccessControl1.png",
           title: "تنظيم الدخول والخروج",
           subtitle: "ACCESS CONTROL",
           description:
             "إدارة حركة الأفراد والزوار والمركبات والبضائع داخل المنشآت وفق إجراءات أمنية دقيقة.",
         },
         {
-          image: "EventSecurity.png",
+          image: "EventSecurity1.png",
           title: "تأمين الفعاليات",
           subtitle: "EVENT SECURITY",
           description:
@@ -566,7 +566,7 @@ export const translations = {
             "أنظمة مراقبة متقدمة وغرف تحكم مركزية وكاميرات حديثة وتحليلات ذكية للكشف السريع عن التهديدات.",
         },
         {
-          image: "SecurityPatrol.png",
+          image: "SecurityPatrol1.png",
           title: "الدوريات الأمنية",
           subtitle: "SECURITY PATROLS",
           description:
@@ -648,21 +648,21 @@ export const translations = {
           title: "تنظيم الدخول والخروج",
           description:
             "إدارة البوابات والتحقق من الزوار وتنظيم دخول المركبات وفحص البضائع.",
-          image: "AccessControl.png",
+          image: "AccessControl1.png",
           link: "/access-control",
         },
         {
           title: "الدوريات الأمنية",
           description:
             "دوريات ميدانية مستمرة لضمان أعلى مستوى من الأمان وسرعة الاستجابة.",
-          image: "SecurityPatrol.png",
+          image: "SecurityPatrol1.png",
           link: "/security-patrols",
         },
         {
           title: "تأمين الفعاليات",
           description:
             "تنظيم وتأمين الفعاليات والمناسبات بكفاءة عالية.",
-          image: "EventSecurity.png",
+          image: "EventSecurity1.png",
           link: "/event-security",
         },
         {
@@ -676,7 +676,7 @@ export const translations = {
           title: "الحراسات الخاصة",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة.",
-          image: "PrivateSecurity.png",
+          image: "PrivateSecurity2.png",
           link: "/private-security",
         },
       ],
