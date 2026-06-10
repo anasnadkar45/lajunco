@@ -26,7 +26,7 @@ export const translations = {
       secondaryButton: "Explore Services",
       slides: [
         {
-          image: "Banner.jpeg",
+          image: "Banner1.png",
           title: "",
           subtitle: "",
           description:
@@ -524,7 +524,7 @@ export const translations = {
       secondaryButton: "استكشف الخدمات",
       slides: [
         {
-          image: "Banner.jpeg",
+          image: "Banner1.png",
           title: "نحمي كل ما يهمك",
           subtitle: "حلول أمنية متكاملة",
           description:
@@ -725,7 +725,7 @@ export const translations = {
         {
           key: "address",
           label: "العنوان",
-          value: "شارع الحسن بن علي",
+          value: "شارع الحسن بن علي، الرياض",
         },
         {
           key: "phone",
@@ -961,7 +961,7 @@ export const translations = {
         quoteEmail: "quotes@lajunco.com",
         email: "info@lajunco.com",
         website: "www.lajunco.com",
-        location: "شارع الحسن بن علي",
+        location: "شارع الحسن بن علي، الرياض",
         hours: "متاح 24/7",
       },
     },
