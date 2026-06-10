@@ -26,6 +26,13 @@ export const translations = {
       secondaryButton: "Explore Services",
       slides: [
         {
+          image: "Banner.jpeg",
+          title: "",
+          subtitle: "",
+          description:
+            "",
+        },
+        {
           image: "FacilitySecurity.png",
           title: "Facility Security",
           subtitle: "FACILITY SECURITY",
@@ -396,7 +403,7 @@ export const translations = {
         quoteEmail: "quotes@lajunco.com",
         email: "info@lajunco.com",
         website: "www.lajunco.com",
-        location: "Riyadh, Kingdom of Saudi Arabia",
+        location: "Al Hasan Ibn Ali,Riyadh, Kingdom of Saudi Arabia",
         hours: "Available 24/7",
       },
     },
@@ -460,7 +467,7 @@ export const translations = {
         {
           key: "address",
           label: "Address",
-          value: "Riyadh - Al Rawdah Dist.",
+          value: "Al Hasan Ibn Ali,Riyadh, Kingdom of Saudi Arabia",
         },
         {
           key: "phone",
@@ -516,6 +523,13 @@ export const translations = {
       primaryButton: "طلب عرض سعر",
       secondaryButton: "استكشف الخدمات",
       slides: [
+        {
+          image: "Banner.jpeg",
+          title: "نحمي كل ما يهمك",
+          subtitle: "حلول أمنية متكاملة",
+          description:
+            "خدمات أمن وحراسة احترافية في المملكة العربية السعودية قائمة على الانضباط والجاهزية والكفاءة التشغيلية والإشراف الميداني الموثوق.",
+        },
         {
           image: "FacilitySecurity.png",
           title: "حراسات المنشآت",
@@ -711,7 +725,7 @@ export const translations = {
         {
           key: "address",
           label: "العنوان",
-          value: "الرياض - حي الروضة",
+          value: "شارع الحسن بن علي",
         },
         {
           key: "phone",
@@ -947,7 +961,7 @@ export const translations = {
         quoteEmail: "quotes@lajunco.com",
         email: "info@lajunco.com",
         website: "www.lajunco.com",
-        location: "الرياض، المملكة العربية السعودية",
+        location: "شارع الحسن بن علي",
         hours: "متاح 24/7",
       },
     },

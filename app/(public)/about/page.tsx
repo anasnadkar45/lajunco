@@ -6,6 +6,7 @@ import About from "@/components/sections/About";
 import { useLanguage } from "@/context/LanguageProvider";
 import { motion } from "motion/react";
 import { BadgeCheck, Eye, Flag, ShieldCheck, Users } from "lucide-react";
+import LegalInformation from "@/components/sections/Legal";
 
 const fadeUp = {
   hidden: {
@@ -71,9 +72,8 @@ export default function AboutPage() {
     <main dir={dir} className="min-h-screen bg-white">
       <About />
 
-      <section className="bg-white py-20">
+      {/* <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4">
-          {/* Header */}
           <motion.div
             variants={fadeUp}
             {...animationProps}
@@ -100,7 +100,6 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
 
-          {/* About Details */}
           <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div className="space-y-4">
               {t.about.description.map((paragraph, index) => (
@@ -142,7 +141,6 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Company Summary Card */}
             <motion.div
               variants={fadeRight}
               {...animationProps}
@@ -175,7 +173,6 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Vision Mission */}
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <InfoCard
               icon={Eye}
@@ -192,7 +189,6 @@ export default function AboutPage() {
             />
           </div>
 
-          {/* Values */}
           <motion.div
             variants={scaleIn}
             {...animationProps}
@@ -249,7 +245,9 @@ export default function AboutPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+
+      <LegalInformation />
     </main>
   );
 }

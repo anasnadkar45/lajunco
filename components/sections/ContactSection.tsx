@@ -285,7 +285,7 @@ export default function ContactSection() {
                 </label>
               </AnimatedField>
 
-              <AnimatedField delay={0.08}>
+              {/* <AnimatedField delay={0.08}>
                 <label className="flex flex-col gap-2">
                   <span className="text-sm font-medium text-slate-700">
                     {contact.form.secondaryEmail}{" "}
@@ -302,7 +302,7 @@ export default function ContactSection() {
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                 </label>
-              </AnimatedField>
+              </AnimatedField> */}
 
               <AnimatedField delay={0.12}>
                 <label className="flex flex-col gap-2">
@@ -320,7 +320,7 @@ export default function ContactSection() {
                 </label>
               </AnimatedField>
 
-              <AnimatedField delay={0.16} className="sm:col-span-2">
+              <AnimatedField delay={0.16} >
                 <label className="flex flex-col gap-2">
                   <span className="text-sm font-medium text-slate-700">
                     {contact.form.city}

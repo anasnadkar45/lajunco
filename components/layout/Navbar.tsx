@@ -23,7 +23,6 @@ export default function Navbar() {
     { label: t.navbar.services, href: "/services" },
     { label: t.navbar.certificates || "Certificates", href: "/certificates" },
     { label: t.navbar.contact, href: "/contact" },
-    { label: t.navbar.legal, href: "/legal" },
     { label: t.navbar.operations, href: "/operations" },
   ];
 

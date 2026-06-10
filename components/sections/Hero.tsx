@@ -18,7 +18,10 @@ type HeroSlide = {
 export default function Hero() {
   const { dir, t } = useLanguage();
   const defaultSlides = t.hero.slides;
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
+  const isFirstSlide = currentSlide === 0;
   const [slides, setSlides] = useState<HeroSlide[]>(() => {
     return (defaultSlides as unknown as any[]).map((slide) => ({
       title: slide.title,
@@ -29,8 +32,6 @@ export default function Hero() {
     }));
   });
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [progress, setProgress] = useState(0);
   const slideDuration = 7000;
 
   useEffect(() => {
@@ -200,104 +201,108 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
-      >
-        <div className="absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,rgba(249,115,22,0.08)_0%,transparent_10%)]" />
-
-        <div className="absolute inset-x-0 top-0 h-full">
-          <div
-            className="absolute left-0 h-0.5 w-full bg-[linear-gradient(90deg,transparent,rgba(249,115,22,0.9),transparent)] shadow-[0_0_30px_rgba(249,115,22,0.8)] blur-sm"
-            style={{ animation: "scan 7s linear infinite" }}
-          />
-        </div>
-
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-32 bg-linear-to-r from-slate-950/50 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-32 bg-linear-to-l from-slate-950/50 to-transparent" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.9 }}
-        className="absolute inset-0 bg-slate-700/20"
-      />
-
-      <div className="relative z-40 mx-auto flex h-full max-w-6xl items-center px-6 pt-52 sm:px-10">
-        <AnimatePresence mode="wait">
+      {!isFirstSlide && (
+        <>
           <motion.div
-            key={currentSlide}
-            variants={contentAnimation as any}
-            initial="hidden"
-            animate="visible"
-            exit={{
-              opacity: 0,
-              y: -20,
-              filter: "blur(6px)",
-              transition: { duration: 0.35 },
-            }}
-            className={`w-full md:w-1/2 ${dir === "rtl" ? "text-right" : "text-left"
-              }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
           >
-            <motion.p
-              variants={itemAnimation as any}
-              className="mb-4 inline-block rounded-lg bg-primary/35 px-4 py-2 text-sm text-primary"
-            >
-              {t.hero.badge}
-            </motion.p>
+            <div className="absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,rgba(249,115,22,0.08)_0%,transparent_10%)]" />
 
-            <motion.p
-              variants={itemAnimation as any}
-              className="text-sm font-bold uppercase tracking-[0.45em] text-primary"
-            >
-              {activeSlide.subtitle}
-            </motion.p>
+            <div className="absolute inset-x-0 top-0 h-full">
+              <div
+                className="absolute left-0 h-0.5 w-full bg-[linear-gradient(90deg,transparent,rgba(249,115,22,0.9),transparent)] shadow-[0_0_30px_rgba(249,115,22,0.8)] blur-sm"
+                style={{ animation: "scan 7s linear infinite" }}
+              />
+            </div>
 
-            <motion.h1
-              variants={itemAnimation as any}
-              className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl"
-            >
-              {activeSlide.title}
-            </motion.h1>
-
-            <motion.p
-              variants={itemAnimation as any}
-              className="mt-6 max-w-xl text-lg text-gray-200 sm:text-xl"
-            >
-              {activeSlide.description}
-            </motion.p>
-
-            <motion.div
-              variants={itemAnimation as any}
-              className="mt-10 flex flex-wrap gap-4"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
-                <Button 
-                size="lg" 
-                className="font-bold text-secondary" 
-                onClick={() => scrollToSection("contact")}
-                >
-                  {t.hero.primaryButton}
-                </Button>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
-                <Button
-                  size="lg"
-                  className="rounded-md border border-white/20 bg-white/5 px-8 py-4 font-bold text-white transition-all duration-300 hover:bg-primary"
-                  onClick={() => scrollToSection("services")}
-                >
-                  {t.hero.secondaryButton}
-                </Button>
-              </motion.div>
-            </motion.div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-linear-to-r from-slate-950/50 to-transparent sm:w-32" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-linear-to-l from-slate-950/50 to-transparent sm:w-32" />
           </motion.div>
-        </AnimatePresence>
-      </div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9 }}
+            className="absolute inset-0 bg-slate-700/20"
+          />
+
+          <div className="relative z-40 mx-auto flex h-full max-w-6xl items-center px-6 pt-52 sm:px-10">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                variants={contentAnimation as any}
+                initial="hidden"
+                animate="visible"
+                exit={{
+                  opacity: 0,
+                  y: -20,
+                  filter: "blur(6px)",
+                  transition: { duration: 0.35 },
+                }}
+                className={`w-full md:w-1/2 ${dir === "rtl" ? "text-right" : "text-left"
+                  }`}
+              >
+                <motion.p
+                  variants={itemAnimation as any}
+                  className="mb-4 inline-block rounded-lg bg-primary/35 px-4 py-2 text-sm text-primary"
+                >
+                  {t.hero.badge}
+                </motion.p>
+
+                <motion.p
+                  variants={itemAnimation as any}
+                  className="text-sm font-bold uppercase tracking-[0.45em] text-primary"
+                >
+                  {activeSlide.subtitle}
+                </motion.p>
+
+                <motion.h1
+                  variants={itemAnimation as any}
+                  className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl"
+                >
+                  {activeSlide.title}
+                </motion.h1>
+
+                <motion.p
+                  variants={itemAnimation as any}
+                  className="mt-6 max-w-xl text-lg text-gray-200 sm:text-xl"
+                >
+                  {activeSlide.description}
+                </motion.p>
+
+                <motion.div
+                  variants={itemAnimation as any}
+                  className="mt-10 flex flex-wrap gap-4"
+                >
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                    <Button
+                      size="lg"
+                      className="font-bold text-secondary"
+                      onClick={() => scrollToSection("contact")}
+                    >
+                      {t.hero.primaryButton}
+                    </Button>
+                  </motion.div>
+
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                    <Button
+                      size="lg"
+                      className="rounded-md border border-white/20 bg-white/5 px-8 py-4 font-bold text-white transition-all duration-300 hover:bg-primary"
+                      onClick={() => scrollToSection("services")}
+                    >
+                      {t.hero.secondaryButton}
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+        </>
+      )}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
@@ -329,23 +334,23 @@ export default function Hero() {
       </motion.div>
 
       <style jsx>{`
-        @keyframes scan {
-          0% {
-            top: -2px;
-            opacity: 0;
-          }
-          5% {
-            opacity: 1;
-          }
-          95% {
-            opacity: 1;
-          }
-          100% {
-            top: 100%;
-            opacity: 0;
-          }
+      @keyframes scan {
+        0% {
+          top: -2px;
+          opacity: 0;
         }
-      `}</style>
+        5% {
+          opacity: 1;
+        }
+        95% {
+          opacity: 1;
+        }
+        100% {
+          top: 100%;
+          opacity: 0;
+        }
+      }
+    `}</style>
     </section>
   );
 }

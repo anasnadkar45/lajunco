@@ -20,7 +20,7 @@ export default function Home() {
       <Navbar />
 
       <SectionNavigator />
-      <LajunBanner />
+      {/* <LajunBanner /> */}
 
       <section id="hero" className="min-h-screen">
         <Hero />

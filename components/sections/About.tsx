@@ -68,9 +68,8 @@ const About = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className={`space-y-6 text-center ${
-            isRtl ? "lg:text-right" : "lg:text-left"
-          }`}
+          className={`space-y-6 text-center ${isRtl ? "lg:text-right" : "lg:text-left"
+            }`}
         >
           <motion.p
             variants={textItem as any}
@@ -80,7 +79,7 @@ const About = () => {
           </motion.p>
 
           <motion.div variants={textItem as any} className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight leading-relaxed sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl">
               {about.title}
             </h2>
 
@@ -89,15 +88,14 @@ const About = () => {
               whileInView={{ width: 64 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-              className={`h-1 rounded-full bg-primary ${
-                isRtl ? "mx-auto lg:mr-0" : "mx-auto lg:ml-0"
-              }`}
+              className={`h-1 rounded-full bg-primary ${isRtl ? "mx-auto lg:mr-0" : "mx-auto lg:ml-0"
+                }`}
             />
           </motion.div>
 
           <motion.div
             variants={textItem as any}
-            className="space-y-4 text-sm leading-7 text-muted-foreground"
+            className="space-y-4 text-lg leading-7 text-muted-foreground"
           >
             {about.description.map((line, index) => (
               <motion.p
@@ -124,9 +122,8 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
-          className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-100 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.45)] ${
-            !isRtl ? "lg:order-first" : ""
-          }`}
+          className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-100 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.45)] ${!isRtl ? "lg:order-first" : ""
+            }`}
         >
           <motion.div
             initial={{ opacity: 0 }}

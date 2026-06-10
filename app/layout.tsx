@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Amiri, Cairo, Noto_Naskh_Arabic, Scheherazade_New } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageProvider";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
@@ -11,6 +11,13 @@ const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["latin", "arabic"],
   weight: ["300", "400", "600", "700", "900"],
+  display: "swap",
+});
+
+const notoNaskh = Noto_Naskh_Arabic({
+  variable: "--font-noto-naskh",
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -107,7 +114,7 @@ export default function RootLayout({
         <LanguageProvider>{children}</LanguageProvider>
         <Toaster />
       </body>
-      
+
     </html>
   );
 }
