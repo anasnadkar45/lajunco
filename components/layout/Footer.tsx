@@ -22,7 +22,7 @@ export default function Footer() {
     services: isArabic ? "الخدمات" : "Services",
     contactUs: isArabic ? "تواصل معنا" : "Contact Us",
 
-    location: isArabic ? "شارع الحسن بن علي" : "Al Hasan Ibn Ali,Riyadh, Kingdom of Saudi Arabia",
+    location: isArabic ? "شارع الحسن بن علي، الرياض" : "Al Hasan Ibn Ali,Riyadh, Kingdom of Saudi Arabia",
     copyright: isArabic
       ? `© ${new Date().getFullYear()} لجون للحراسات الأمنية. جميع الحقوق محفوظة.`
       : `© ${new Date().getFullYear()} Lajun Security Services. All rights reserved.`,
@@ -78,19 +78,18 @@ export default function Footer() {
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div
-              className={`flex items-center gap-4 ${
-                isArabic ? "text-right" : "text-left"
-              }`}
+              className={`flex items-center gap-4 ${isArabic ? "text-right" : "text-left"
+                }`}
             >
               {/* <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-white/5">
               </div> */}
-                <Image
-                  src="/logo.png"
-                  alt="Lajun Security"
-                  width={80}
-                  height={80}
-                  className="h-auto w-auto"
-                />
+              <Image
+                src="/logo.png"
+                alt="Lajun Security"
+                width={80}
+                height={80}
+                className="h-auto w-auto"
+              />
 
               <div>
                 <p className="text-lg font-bold leading-tight text-white">
@@ -103,17 +102,15 @@ export default function Footer() {
             </div>
 
             <p
-              className={`mt-5 max-w-sm text-sm leading-7 text-slate-400 ${
-                isArabic ? "text-right" : "text-left"
-              }`}
+              className={`mt-5 max-w-sm text-sm leading-7 text-slate-400 ${isArabic ? "text-right" : "text-left"
+                }`}
             >
               {footerLabels.description}
             </p>
 
             <div
-              className={`mt-6 flex items-center gap-3 ${
-                isArabic ? "justify-start sm:justify-end lg:justify-start" : ""
-              }`}
+              className={`mt-6 flex items-center gap-3 ${isArabic ? "justify-start sm:justify-end lg:justify-start" : ""
+                }`}
             >
               {socialLinks.map((social) => {
                 const Icon = social.icon;
