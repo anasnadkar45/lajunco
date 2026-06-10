@@ -88,7 +88,7 @@ export default function Hero() {
           const combinedSlides = [
             ...dbSlides,
             ...defaultHeroSlides,
-          ].slice(0, 6);
+          ].slice(0, 7);
 
           setSlides(combinedSlides);
         }
