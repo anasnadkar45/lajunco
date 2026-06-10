@@ -157,14 +157,14 @@ export const translations = {
           title: "Security Patrols",
           description:
             "Continuous field patrols to ensure high levels of safety and fast incident response.",
-          image: "SecurityPatrol.png",
+          image: "SecurityPatrol1.png",
           link: "/security-patrols",
         },
         {
           title: "Event Security",
           description:
             "Organizing and securing events and occasions with high efficiency.",
-          image: "EventSecurity.png",
+          image: "EventSecurity1.png",
           link: "/event-security",
         },
         {
