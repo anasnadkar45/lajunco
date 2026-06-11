@@ -33,14 +33,14 @@ export const translations = {
             "",
         },
         {
-          image: "FacilitySecurity.png",
+          image: "FacilitySecurity1.png",
           title: "Facility Security",
           subtitle: "FACILITY SECURITY",
           description:
             "Comprehensive protection for buildings and facilities with disciplined movement control and high-quality security standards.",
         },
         {
-          image: "PrivateSecurity2.png",
+          image: "privateSecurity3.png",
           title: "Private Security",
           subtitle: "PRIVATE SECURITY",
           description:
@@ -143,7 +143,7 @@ export const translations = {
           title: "Facility Security",
           description:
             "Comprehensive protection for buildings and facilities with movement control and discipline.",
-          image: "FacilitySecurity.png",
+          image: "FacilitySecurity1.png",
           link: "/facility-security",
         },
         {
@@ -178,7 +178,7 @@ export const translations = {
           title: "Private Security",
           description:
             "Customized security services for sensitive locations and private facilities.",
-          image: "PrivateSecurity2.png",
+          image: "privateSecurity3.png",
           link: "/private-security",
         },
       ],
@@ -531,14 +531,14 @@ export const translations = {
             "خدمات أمن وحراسة احترافية في المملكة العربية السعودية قائمة على الانضباط والجاهزية والكفاءة التشغيلية والإشراف الميداني الموثوق.",
         },
         {
-          image: "FacilitySecurity.png",
+          image: "FacilitySecurity1.png",
           title: "حراسات المنشآت",
           subtitle: "FACILITY SECURITY",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط بأعلى معايير الجودة.",
         },
         {
-          image: "PrivateSecurity2.png",
+          image: "privateSecurity3.png",
           title: "الحراسات الخاصة",
           subtitle: "PRIVATE SECURITY",
           description:
@@ -641,7 +641,7 @@ export const translations = {
           title: "حراسات المنشآت",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط.",
-          image: "FacilitySecurity.png",
+          image: "FacilitySecurity1.png",
           link: "/facility-security",
         },
         {
@@ -676,7 +676,7 @@ export const translations = {
           title: "الحراسات الخاصة",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة.",
-          image: "PrivateSecurity2.png",
+          image: "privateSecurity3.png",
           link: "/private-security",
         },
       ],
@@ -697,8 +697,8 @@ export const translations = {
     },
 
     legalInformation: {
-      badge: "البيانات القانونية",
-      title: "البيانات القانونية",
+      badge: "البيانات الرسمية",
+      title: "البيانات الرسمية",
       description:
         "جميع المعلومات أدناه مسجلة ومعتمدة لدى الجهات الحكومية المختصة في المملكة العربية السعودية.",
       info: [
