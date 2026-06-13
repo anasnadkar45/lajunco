@@ -33,7 +33,7 @@ export const translations = {
             "",
         },
         {
-          image: "FacilitySecurity1.png",
+          image: "FacilitySecurity.jpg",
           title: "Facility Security",
           subtitle: "FACILITY SECURITY",
           description:
@@ -143,7 +143,7 @@ export const translations = {
           title: "Facility Security",
           description:
             "Comprehensive protection for buildings and facilities with movement control and discipline.",
-          image: "FacilitySecurity1.png",
+          image: "FacilitySecurity.jpg",
           link: "/facility-security",
         },
         {
@@ -531,7 +531,7 @@ export const translations = {
             "خدمات أمن وحراسة احترافية في المملكة العربية السعودية قائمة على الانضباط والجاهزية والكفاءة التشغيلية والإشراف الميداني الموثوق.",
         },
         {
-          image: "FacilitySecurity1.png",
+          image: "FacilitySecurity.jpg",
           title: "حراسات المنشآت",
           subtitle: "FACILITY SECURITY",
           description:
@@ -641,7 +641,7 @@ export const translations = {
           title: "حراسات المنشآت",
           description:
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط.",
-          image: "FacilitySecurity1.png",
+          image: "FacilitySecurity.jpg",
           link: "/facility-security",
         },
         {
