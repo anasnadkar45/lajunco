@@ -40,7 +40,7 @@ export const translations = {
             "Comprehensive protection for buildings and facilities with disciplined movement control and high-quality security standards.",
         },
         {
-          image: "privateSecurity4.png",
+          image: "PrivateSecurity4.png",
           title: "Private Security",
           subtitle: "PRIVATE SECURITY",
           description:
@@ -178,7 +178,7 @@ export const translations = {
           title: "Private Security",
           description:
             "Customized security services for sensitive locations and private facilities.",
-          image: "privateSecurity4.png",
+          image: "PrivateSecurity4.png",
           link: "/private-security",
         },
       ],
@@ -538,7 +538,7 @@ export const translations = {
             "حماية شاملة للمباني والمنشآت مع تنظيم الحركة والانضباط بأعلى معايير الجودة.",
         },
         {
-          image: "privateSecurity4.png",
+          image: "PrivateSecurity4.png",
           title: "الحراسات الخاصة",
           subtitle: "PRIVATE SECURITY",
           description:
@@ -676,7 +676,7 @@ export const translations = {
           title: "الحراسات الخاصة",
           description:
             "خدمات أمنية مخصصة للمواقع الحساسة والمنشآت الخاصة.",
-          image: "privateSecurity4.png",
+          image: "PrivateSecurity4.png",
           link: "/private-security",
         },
       ],
